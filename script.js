@@ -19,7 +19,10 @@ const projectsData = {
   p1: {
     title: "Machine Learning Model for Electrospinning Optimization",
     categoryTag: "AI & ML / RESEARCH",
-    image: "electrospinning.jpg",
+    images: [
+      { src: "electrospinning.jpg", caption: "Electrospinning apparatus & process schematic" },
+      { src: "electrospinning_ui.png", caption: "AI-assisted electrospinning parameter optimization interface" }
+    ],
     overview: "Predicting PVDF fiber diameter using electrospinning process parameters and machine-learning regression.",
     role: "Research Intern (IIT Indore)",
     tools: ["Python", "Scikit-Learn", "Machine Learning", "Data Processing", "PVDF", "Electrospinning"],
@@ -287,19 +290,36 @@ function openCaseStudyModal(data) {
     skillsEl.appendChild(span);
   });
 
-  // Project Primary Image in Modal
+  // Project Images in Modal (Primary & Secondary documentation)
   const galleryEl = document.getElementById('pmodal-gallery-grid');
   galleryEl.innerHTML = '';
-  if (data.image) {
-    const div = document.createElement('div');
-    div.className = 'pmodal-img-container';
+
+  const imagesList = data.images || (data.image ? [{ src: data.image }] : []);
+
+  imagesList.forEach(imgObj => {
+    const container = document.createElement('div');
+    container.className = 'pmodal-img-wrapper';
+
+    const imgDiv = document.createElement('div');
+    imgDiv.className = 'pmodal-img-container';
+
     const img = document.createElement('img');
-    img.src = data.image;
+    img.src = typeof imgObj === 'string' ? imgObj : imgObj.src;
     img.alt = data.title;
     img.className = 'pmodal-img';
-    div.appendChild(img);
-    galleryEl.appendChild(div);
-  }
+
+    imgDiv.appendChild(img);
+    container.appendChild(imgDiv);
+
+    if (typeof imgObj === 'object' && imgObj.caption) {
+      const caption = document.createElement('div');
+      caption.className = 'pmodal-img-caption';
+      caption.textContent = imgObj.caption;
+      container.appendChild(caption);
+    }
+
+    galleryEl.appendChild(container);
+  });
 
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
