@@ -68,7 +68,10 @@ const projectsData = {
   p4: {
     title: "Drone Lab Mechanical Component",
     categoryTag: "CAD & 3D PRINTING",
-    image: "drone_catia.jpg",
+    images: [
+      { src: "drone_catia_cad.png", caption: "CAD design and fabricated component" },
+      { src: "drone_catia_print.png", caption: "Drone laboratory mechanical component" }
+    ],
     overview: "Designed and fabricated a functional mechanical component for drone laboratory applications using CAD and additive manufacturing.",
     role: "CAD & Structural Designer",
     tools: ["CATIA V5", "3D Printing", "Mechanical Design"],
