@@ -36,7 +36,10 @@ const projectsData = {
   p2: {
     title: "3D-Printed Artificial Bone Scaffold",
     categoryTag: "CAD & BIO-MANUFACTURING",
-    image: "bone_scaffold.jpg",
+    images: [
+      { src: "bone_scaffold_cad.png", caption: "CAD lattice scaffold design" },
+      { src: "bone_scaffold_print.png", caption: "3D-printed artificial bone scaffold" }
+    ],
     overview: "Porous biomimetic scaffold design using CAD modeling and additive manufacturing.",
     role: "CAD & Additive Manufacturing Designer",
     tools: ["Fusion 360", "CAD Modeling", "3D Printing", "Additive Manufacturing", "Bioengineering"],
