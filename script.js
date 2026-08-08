@@ -54,7 +54,9 @@ const projectsData = {
   p3: {
     title: "Gauge History & Inspection System",
     categoryTag: "QUALITY / MANUFACTURING",
-    image: "gauge_system.jpg",
+    images: [
+      { src: "gauge_inspection_sheet.png", caption: "Gauge inspection and history tracking" }
+    ],
     overview: "Digital workflow for tracking gauge usage, inspection history, and quality-related data during manufacturing operations.",
     role: "Quality Intern (ACE Inotec, Bengaluru)",
     tools: ["Quality Engineering", "Inspection", "Excel", "Manufacturing"],
