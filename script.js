@@ -20,7 +20,6 @@ const projectsData = {
     title: "Machine Learning Model for Electrospinning Optimization",
     categoryTag: "AI & ML / RESEARCH",
     images: [
-      { src: "electrospinning.jpg", caption: "Electrospinning apparatus & process schematic" },
       { src: "electrospinning_ui.png", caption: "AI-assisted electrospinning parameter optimization interface" }
     ],
     overview: "Predicting PVDF fiber diameter using electrospinning process parameters and machine-learning regression.",
