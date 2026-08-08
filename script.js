@@ -6,70 +6,115 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackgroundCanvas();
   initThemeToggle();
   initProjectFilters();
-  initProjectDetailModal();
+  initCaseStudyModal();
   initResumeModal();
   initContactForm();
 });
 
 /* ==========================================================================
-   PROJECT DATA STORE FOR DETAIL MODAL OVERLAY
+   PROJECT DATA STORE FOR CASE STUDY MODAL OVERLAY
+   Uses strictly factual data from candidate background.
    ========================================================================== */
 const projectsData = {
   p1: {
-    category: "AI & ML",
-    specTag: "[ PROCESS OPTIMIZATION ]",
     title: "Machine Learning Model for Electrospinning Optimization",
-    overview: "Developed predictive machine learning regression models to optimize PVDF (Polyvinylidene Fluoride) polymer fiber diameter produced during electrospinning processes. Evaluated multi-variable experimental parameters to establish precise control over fiber morphology and nanoscale distribution.",
-    highlights: [
-      "Engineered data preprocessing, feature selection, and cross-validation pipelines in Python.",
-      "Mapped relationships between Applied Voltage (10-30 kV), Flow Rate (0.2-3.0 mL/h), Polymer Concentration (10-25%), and Tip-to-Collector Distance.",
-      "Achieved high predictive R² accuracy score using Scikit-Learn Random Forest and Gradient Boosting regressors.",
-      "Optimized nanofiber diameter predictability to support high-efficiency filtration & piezo-electric sensor research."
+    categoryTag: "AI & ML / RESEARCH",
+    image: "electrospinning.jpg",
+    overview: "Developed predictive machine learning regression models to evaluate process parameters affecting PVDF polymer fiber diameter during electrospinning.",
+    role: "Lead Student Researcher / Machine Learning Engineer",
+    tools: ["Python", "Scikit-Learn", "Machine Learning", "Data Processing", "PVDF", "Electrospinning"],
+    details: [
+      "Built machine learning regression pipelines in Python using Scikit-Learn.",
+      "Evaluated electrospinning parameters including voltage, flow rate, concentration, and tip-to-collector distance.",
+      "Analyzed polymer fiber diameter distributions for process parameter optimization.",
+      "Assisted in experimental data modeling and documentation."
     ],
-    skills: ["Python", "Scikit-Learn", "Machine Learning", "Data Processing", "Regression Modeling", "Feature Engineering"],
-    images: [] // User will provide images here!
+    learning: "Gained practical experience in combining experimental physical processes with statistical machine learning modeling for process parameter optimization."
   },
   p2: {
-    category: "CAD & Bio-Mfg",
-    specTag: "[ 3D PRINTING & LATTICE ]",
     title: "3D-Printed Artificial Bone Scaffold",
-    overview: "Designed and fabricated lightweight porous biomimetic scaffold structures using advanced CAD software and additive manufacturing (3D Printing). Focused on structural geometry optimization to enhance osteointegration and cellular ingrowth for tissue engineering applications.",
-    highlights: [
-      "Created parametric porous unit-cell lattice geometries (Cubic, Gyroid, and Honeycomb topologies) using CAD tools.",
-      "Applied mass reduction and surface area-to-volume ratio optimization while preserving required mechanical stiffness.",
-      "Fabricated prototype scaffolds using high-precision 3D printing additive manufacturing.",
-      "Evaluated compressive load resistance and pore interconnectivity for biomedical alignment."
+    categoryTag: "CAD & BIO-MANUFACTURING",
+    image: "bone_scaffold.jpg",
+    overview: "Designed porous biomimetic artificial bone scaffold structures utilizing CAD modeling tools and fabricated physical prototypes through additive manufacturing.",
+    role: "CAD & Additive Manufacturing Designer",
+    tools: ["Fusion 360", "CAD Modeling", "3D Printing", "Additive Manufacturing", "Bioengineering"],
+    details: [
+      "Created parametric porous unit-cell lattice structures using 3D CAD software.",
+      "Optimized structural geometry to achieve targeted porosity for biomimetic applications.",
+      "Fabricated prototype scaffolds using high-precision FDM 3D printing.",
+      "Evaluated physical lattice geometry integrity and pore distribution."
     ],
-    skills: ["Fusion 360", "CAD Modeling", "Additive Manufacturing", "Porous Geometry", "Lightweighting", "3D Printing"],
-    images: [] // User will provide images here!
+    learning: "Mastered biomimetic porous lattice modeling techniques and FDM 3D printing slice parameters for medical engineering applications."
   },
   p3: {
-    category: "CAD & Design",
-    specTag: "[ CATIA V5 & FEA ]",
-    title: "Drone Component Design using CATIA & 3D Printing",
-    overview: "Engineered an optimized lightweight quadcopter arm and motor mount component in CATIA V5, executed finite element analysis (FEA) in ANSYS to evaluate structural load capacity, and validated the design via physical FDM 3D printing.",
-    highlights: [
-      "Designed parametric 3D solid models and complex surface geometries in CATIA V5 (Part & Assembly Design).",
-      "Performed static structural stress and displacement simulations in ANSYS under maximum rotor thrust conditions.",
-      "Identified stress concentration zones and applied rib reinforcement to prevent mechanical fatigue failure.",
-      "Fabricated functional 3D-printed prototypes following Design for Manufacturing (DFM) principles."
+    title: "OEE Optimization Excel Tool",
+    categoryTag: "MANUFACTURING",
+    image: "oee_tool.jpg",
+    overview: "Developed an Excel-based Overall Equipment Effectiveness (OEE) tracking system to monitor production performance and manufacturing efficiency.",
+    role: "Quality & Industrial Engineering Intern (ACE Inotec, Bengaluru)",
+    tools: ["Excel", "OEE", "Manufacturing", "Data Analysis", "Production Planning"],
+    details: [
+      "Formulated spreadsheet data structures to capture availability, performance, and quality metrics.",
+      "Tracked machine downtime reasons and production line cycle efficiencies.",
+      "Generated automated visual KPI reports for manufacturing management review."
     ],
-    skills: ["CATIA V5", "ANSYS Structural", "Rapid Prototyping", "DFM", "Finite Element Analysis", "Aerospace Design"],
-    images: [] // User will provide images here!
+    learning: "Understood key shopfloor manufacturing operational metrics and how data tracking directly impacts production efficiency."
   },
   p4: {
-    category: "Quality QA",
-    specTag: "[ METROLOGY & GD&T ]",
     title: "Gauge History & Inspection System",
-    overview: "Developed a comprehensive digital gauge tracking and inspection workflow to improve calibration monitoring, metrology record management, and GD&T compliance in high-volume automotive manufacturing.",
-    highlights: [
-      "Established systematic gauge calibration logs for precision micrometers, bore gauges, and height gauges.",
-      "Enhanced inspection record traceability to satisfy rigorous automotive ISO quality assurance standards.",
-      "Applied Geometric Dimensioning and Tolerancing (GD&T) principles to evaluate component drawing callouts.",
-      "Streamlined quality control reporting to reduce defect rates during assembly line inspections."
+    categoryTag: "QUALITY / MANUFACTURING",
+    image: "gauge_system.jpg",
+    overview: "Designed a digital workflow for tracking gauge usage, calibration inspection history, and quality-related data during manufacturing operations.",
+    role: "Quality Intern (ACE Inotec, Bengaluru)",
+    tools: ["Quality Engineering", "Inspection", "Excel", "Manufacturing", "Precision Gauges", "GD&T"],
+    details: [
+      "Conducted sample inspections using precision gauges (micrometers, height gauges).",
+      "Maintained gauge history calibration logs and equipment traceability records.",
+      "Interpreted GD&T engineering drawing specifications during quality control procedures."
     ],
-    skills: ["Precision Gauges", "GD&T", "Calibration Workflow", "Quality Control", "ISO Standards", "Metrology"],
-    images: [] // User will provide images here!
+    learning: "Gained rigorous exposure to GD&T callout interpretation, precision metrology calibration, and industrial quality assurance workflows."
+  },
+  p5: {
+    title: "Drone Lab Mechanical Component",
+    categoryTag: "CAD & DESIGN",
+    image: "drone_catia.jpg",
+    overview: "Designed and fabricated a functional mechanical component for drone laboratory applications using CATIA V5 and additive manufacturing.",
+    role: "CAD & Structural Designer",
+    tools: ["CATIA V5", "3D Printing", "Mechanical Design", "ANSYS Structural", "DFM"],
+    details: [
+      "Designed 3D parametric component models in CATIA V5.",
+      "Conducted structural analysis considerations in ANSYS.",
+      "Fabricated physical prototypes using 3D printing following Design for Manufacturing (DFM) guidelines."
+    ],
+    learning: "Enhanced proficiency in CATIA V5 surface/part modeling and rapid prototyping for lightweight structural components."
+  },
+  p6: {
+    title: "VenueVista",
+    categoryTag: "WEB DEVELOPMENT",
+    image: "venuevista.jpg",
+    overview: "Web-based auditorium booking platform providing real-time availability tracking and booking management.",
+    role: "Web Application Developer",
+    tools: ["HTML", "CSS", "Java", "Web Development"],
+    details: [
+      "Built clean web interfaces for venue and auditorium reservation management.",
+      "Implemented structured backend logic using Java.",
+      "Provided real-time availability status tracking for event management."
+    ],
+    learning: "Strengthened full-stack web software development skills and database logic structuring."
+  },
+  p7: {
+    title: "AgriTech",
+    categoryTag: "WEB / AGRITECH",
+    image: "agritech.jpg",
+    overview: "Web-based agricultural equipment rental platform designed to connect farmers with available farming machinery.",
+    role: "Web Application Developer",
+    tools: ["HTML", "CSS", "Web Development", "Agritech"],
+    details: [
+      "Designed user-friendly web interfaces tailored for agricultural equipment listings.",
+      "Structured rental catalog navigation and equipment availability details.",
+      "Applied responsive UI design principles for accessible web browsing."
+    ],
+    learning: "Explored applying digital web platforms to solve practical agricultural machinery resource sharing challenges."
   }
 };
 
@@ -167,6 +212,8 @@ function initThemeToggle() {
   const savedTheme = localStorage.getItem('sketch-theme') || 'light';
   applyTheme(savedTheme);
 
+  if (!toggleBtn) return;
+
   toggleBtn.addEventListener('click', () => {
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -177,21 +224,21 @@ function initThemeToggle() {
   function applyTheme(theme) {
     html.setAttribute('data-theme', theme);
     if (theme === 'dark') {
-      icon.textContent = '☀️';
-      text.textContent = 'LIGHT SKETCH';
+      if (icon) icon.textContent = '☀️';
+      if (text) text.textContent = 'LIGHT SKETCH';
     } else {
-      icon.textContent = '🌙';
-      text.textContent = 'DARK SKETCH';
+      if (icon) icon.textContent = '🌙';
+      if (text) text.textContent = 'DARK SKETCH';
     }
   }
 }
 
 /* ==========================================================================
-   3. PROJECT CATEGORY FILTER PILLS
+   3. CATEGORY FILTERS (ALL, AI/ML, CAD, MANUFACTURING, RESEARCH, WEB)
    ========================================================================== */
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-pill');
-  const projectCards = document.querySelectorAll('.project-sketch-card[data-category]');
+  const projectCards = document.querySelectorAll('.project-item-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -201,9 +248,9 @@ function initProjectFilters() {
       const filterVal = btn.getAttribute('data-filter');
 
       projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filterVal === 'all' || filterVal === category) {
-          card.style.display = 'flex';
+        const categories = (card.getAttribute('data-categories') || '').split(' ');
+        if (filterVal === 'all' || categories.includes(filterVal)) {
+          card.style.display = card.classList.contains('featured-project-card') ? 'grid' : 'flex';
         } else {
           card.style.display = 'none';
         }
@@ -213,21 +260,24 @@ function initProjectFilters() {
 }
 
 /* ==========================================================================
-   4. PROJECT DETAIL MODAL HANDLER
+   4. CASE STUDY MODAL HANDLER
    ========================================================================== */
-function initProjectDetailModal() {
+function initCaseStudyModal() {
   const modal = document.getElementById('project-detail-modal');
   const closeBtn = document.getElementById('close-project-modal-btn');
-  const projectCards = document.querySelectorAll('.clickable-card');
+  const triggers = document.querySelectorAll('.view-case-study-btn, .editorial-img-box, .more-img-box');
 
   if (!modal || !closeBtn) return;
 
-  projectCards.forEach(card => {
-    card.addEventListener('click', (e) => {
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let card = trigger.closest('[data-project-id]');
+      if (!card) return;
       const projectId = card.getAttribute('data-project-id');
       const data = projectsData[projectId];
       if (data) {
-        openProjectModal(data);
+        openCaseStudyModal(data);
       }
     });
   });
@@ -252,53 +302,45 @@ function initProjectDetailModal() {
   });
 }
 
-function openProjectModal(data) {
+function openCaseStudyModal(data) {
   const modal = document.getElementById('project-detail-modal');
   
-  document.getElementById('pmodal-category-badge').textContent = data.category;
-  document.getElementById('pmodal-spec-tag').textContent = data.specTag;
+  document.getElementById('pmodal-category-badge').textContent = data.categoryTag;
+  document.getElementById('pmodal-spec-tag').textContent = '[ TECHNICAL CASE STUDY ]';
   document.getElementById('pmodal-title').textContent = data.title;
   document.getElementById('pmodal-overview').textContent = data.overview;
 
-  // Populate bullet highlights
+  // Highlights / Details
   const highlightsEl = document.getElementById('pmodal-highlights');
   highlightsEl.innerHTML = '';
-  data.highlights.forEach(item => {
+  data.details.forEach(item => {
     const li = document.createElement('li');
     li.textContent = item;
     highlightsEl.appendChild(li);
   });
 
-  // Populate skill pills
+  // Tools / Technologies
   const skillsEl = document.getElementById('pmodal-skill-pills');
   skillsEl.innerHTML = '';
-  data.skills.forEach(skill => {
+  data.tools.forEach(tool => {
     const span = document.createElement('span');
     span.className = 'skill-pill lg';
-    span.textContent = skill;
+    span.textContent = tool;
     skillsEl.appendChild(span);
   });
 
-  // Populate image gallery container
+  // Project Primary Image in Modal
   const galleryEl = document.getElementById('pmodal-gallery-grid');
   galleryEl.innerHTML = '';
-
-  if (data.images && data.images.length > 0) {
-    data.images.forEach(imgSrc => {
-      const div = document.createElement('div');
-      div.className = 'pmodal-gallery-item';
-      const img = document.createElement('img');
-      img.src = imgSrc;
-      img.alt = data.title;
-      div.appendChild(img);
-      galleryEl.appendChild(div);
-    });
-  } else {
-    // Show clean placeholder slot ready for user images
-    const placeholder = document.createElement('div');
-    placeholder.className = 'pmodal-gallery-placeholder';
-    placeholder.innerHTML = '📁 <em>Project images ready to be added here upon receipt.</em>';
-    galleryEl.appendChild(placeholder);
+  if (data.image) {
+    const div = document.createElement('div');
+    div.className = 'pmodal-img-container';
+    const img = document.createElement('img');
+    img.src = data.image;
+    img.alt = data.title;
+    img.className = 'pmodal-img';
+    div.appendChild(img);
+    galleryEl.appendChild(div);
   }
 
   modal.style.display = 'flex';

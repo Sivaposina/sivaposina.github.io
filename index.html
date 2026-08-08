@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body class="sketch-theme">
 
@@ -133,114 +133,256 @@
           </div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- SECTION: FEATURED PROJECTS -->
+    <!-- SECTION: PROJECTS (IMAGE-FIRST & EDITORIAL MAGAZINE DESIGN) -->
     <section id="projects" class="projects-section section-padding">
       <div class="container">
         
         <div class="section-title-wrapper text-center">
           <div class="section-tag-box">[ DRAFTING BOARD ]</div>
-          <h2 class="handwritten-section-title">FEATURED PROJECTS</h2>
+          <h2 class="handwritten-section-title">PROJECTS</h2>
+          <p class="section-subtitle">Selected work in Mechanical Design, Manufacturing, Research &amp; AI/ML</p>
           <div class="title-underline-scribble"></div>
         </div>
 
-        <!-- Filter Pills Bar -->
+        <!-- Category Filters -->
         <div class="filter-pills-row">
-          <button class="filter-pill active" data-filter="all">ALL PROJECTS</button>
-          <button class="filter-pill" data-filter="ml">AI &amp; ML</button>
-          <button class="filter-pill" data-filter="bio">CAD &amp; BIO-MFG</button>
+          <button class="filter-pill active" data-filter="all">ALL</button>
+          <button class="filter-pill" data-filter="ai_ml">AI / ML</button>
           <button class="filter-pill" data-filter="cad">CAD &amp; DESIGN</button>
-          <button class="filter-pill" data-filter="qa">QUALITY QA</button>
+          <button class="filter-pill" data-filter="manufacturing">MANUFACTURING</button>
+          <button class="filter-pill" data-filter="research">RESEARCH</button>
+          <button class="filter-pill" data-filter="web">WEB</button>
         </div>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid-layout">
+        <!-- FEATURED PROJECTS CONTAINER -->
+        <div class="featured-projects-wrapper">
           
-          <!-- PROJECT 1: Machine Learning Electrospinning -->
-          <div class="project-sketch-card clickable-card" data-category="ml" data-project-id="p1">
-            <div class="card-top-tag-row">
-              <span class="category-pill-badge">AI &amp; ML</span>
-              <span class="right-spec-tag">[ PROCESS OPTIMIZATION ]</span>
-            </div>
-
-            <h3 class="project-title">Machine Learning Model for Electrospinning Optimization</h3>
-            <p class="project-subtext">Developed machine learning regression models to predict PVDF polymer fiber diameter using electrospinning process parameters (voltage, flow rate, concentration, tip-to-collector distance).</p>
-
-            <div class="project-card-footer">
-              <div class="project-skill-pills">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">Scikit-Learn</span>
-                <span class="skill-pill">Machine Learning</span>
-                <span class="skill-pill">Data Processing</span>
+          <!-- FEATURED PROJECT 01 (IMAGE LEFT, CONTENT RIGHT) -->
+          <article class="featured-project-card project-item-card" data-categories="ai_ml research" data-project-id="p1">
+            <div class="featured-img-col">
+              <div class="editorial-img-box">
+                <img src="electrospinning.jpg" alt="Machine Learning Model for Electrospinning Optimization" class="editorial-img">
+                <div class="img-hover-overlay">
+                  <span class="hover-num">01</span>
+                  <span class="hover-text">VIEW PROJECT →</span>
+                </div>
               </div>
-              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
             </div>
+            
+            <div class="featured-info-col">
+              <div class="project-num-tag">PROJECT 01 &nbsp;///&nbsp; <span class="tag-cat">AI &amp; ML / RESEARCH</span></div>
+              <h3 class="featured-title">Machine Learning Model for Electrospinning Optimization</h3>
+              <p class="featured-desc">"Predicting PVDF fiber diameter using electrospinning process parameters and machine-learning regression."</p>
+
+              <div class="tech-stack-group">
+                <span class="tech-label">TECHNOLOGY</span>
+                <div class="project-skill-pills">
+                  <span class="skill-pill">Python</span>
+                  <span class="skill-pill">Scikit-Learn</span>
+                  <span class="skill-pill">Machine Learning</span>
+                  <span class="skill-pill">Data Processing</span>
+                  <span class="skill-pill">PVDF</span>
+                  <span class="skill-pill">Electrospinning</span>
+                </div>
+              </div>
+
+              <button class="case-study-link view-case-study-btn" data-project-id="p1">VIEW CASE STUDY →</button>
+            </div>
+          </article>
+
+          <!-- FEATURED PROJECT 02 (REVERSED: CONTENT LEFT, IMAGE RIGHT) -->
+          <article class="featured-project-card reversed project-item-card" data-categories="cad manufacturing" data-project-id="p2">
+            <div class="featured-info-col">
+              <div class="project-num-tag">PROJECT 02 &nbsp;///&nbsp; <span class="tag-cat">CAD &amp; BIO-MFG</span></div>
+              <h3 class="featured-title">3D-Printed Artificial Bone Scaffold</h3>
+              <p class="featured-desc">"Porous biomimetic scaffold design using CAD modeling and additive manufacturing."</p>
+
+              <div class="tech-stack-group">
+                <span class="tech-label">TECHNOLOGY</span>
+                <div class="project-skill-pills">
+                  <span class="skill-pill">Fusion 360</span>
+                  <span class="skill-pill">CAD Modeling</span>
+                  <span class="skill-pill">3D Printing</span>
+                  <span class="skill-pill">Additive Manufacturing</span>
+                  <span class="skill-pill">Bioengineering</span>
+                </div>
+              </div>
+
+              <button class="case-study-link view-case-study-btn" data-project-id="p2">VIEW CASE STUDY →</button>
+            </div>
+
+            <div class="featured-img-col">
+              <div class="editorial-img-box">
+                <img src="bone_scaffold.jpg" alt="3D-Printed Artificial Bone Scaffold" class="editorial-img">
+                <div class="img-hover-overlay">
+                  <span class="hover-num">02</span>
+                  <span class="hover-text">VIEW PROJECT →</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- MORE PROJECTS SECTION -->
+        <div class="more-projects-section">
+          <div class="more-projects-header">
+            <span class="more-tag-line">/// DRAFTING ARCHIVE</span>
+            <h3 class="more-title">MORE PROJECTS</h3>
           </div>
 
-          <!-- PROJECT 2: 3D-Printed Artificial Bone Scaffold -->
-          <div class="project-sketch-card clickable-card" data-category="bio" data-project-id="p2">
-            <div class="card-top-tag-row">
-              <span class="category-pill-badge">CAD &amp; Bio-Mfg</span>
-              <span class="right-spec-tag">[ 3D PRINTING ]</span>
-            </div>
-
-            <h3 class="project-title">3D-Printed Artificial Bone Scaffold</h3>
-            <p class="project-subtext">Designed and fabricated porous biomimetic bone scaffold structures using CAD tools and additive manufacturing. Applied lightweight geometry optimization for osteointegration.</p>
-
-            <div class="project-card-footer">
-              <div class="project-skill-pills">
-                <span class="skill-pill">Fusion 360</span>
-                <span class="skill-pill">CAD Modeling</span>
-                <span class="skill-pill">Additive Manufacturing</span>
+          <div class="more-projects-grid">
+            
+            <!-- Project 03: OEE Optimization Excel Tool -->
+            <article class="more-project-card project-item-card" data-categories="manufacturing" data-project-id="p3">
+              <div class="card-meta-bar">
+                <span class="p-num">PROJECT_03</span>
+                <span class="p-cat">MANUFACTURING</span>
               </div>
-              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
-            </div>
-          </div>
-
-          <!-- PROJECT 3: Drone Component Design using CATIA -->
-          <div class="project-sketch-card clickable-card" data-category="cad" data-project-id="p3">
-            <div class="card-top-tag-row">
-              <span class="category-pill-badge">CAD &amp; Design</span>
-              <span class="right-spec-tag">[ CATIA V5 &amp; FEA ]</span>
-            </div>
-
-            <h3 class="project-title">Drone Component Design using CATIA &amp; 3D Printing</h3>
-            <p class="project-subtext">Designed a lightweight drone component in CATIA V5, executed FEA stress analysis in ANSYS, and fabricated physical prototypes using FDM 3D printing.</p>
-
-            <div class="project-card-footer">
-              <div class="project-skill-pills">
-                <span class="skill-pill">CATIA V5</span>
-                <span class="skill-pill">ANSYS Structural</span>
-                <span class="skill-pill">Rapid Prototyping</span>
-                <span class="skill-pill">DFM</span>
+              <div class="more-img-box">
+                <img src="oee_tool.jpg" alt="OEE Optimization Excel Tool" class="more-img">
+                <div class="img-hover-overlay">
+                  <span class="hover-text">VIEW PROJECT →</span>
+                </div>
               </div>
-              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
-            </div>
-          </div>
-
-          <!-- PROJECT 4: Gauge History & Inspection System -->
-          <div class="project-sketch-card clickable-card" data-category="qa" data-project-id="p4">
-            <div class="card-top-tag-row">
-              <span class="category-pill-badge">Quality QA</span>
-              <span class="right-spec-tag">[ METROLOGY &amp; GD&amp;T ]</span>
-            </div>
-
-            <h3 class="project-title">Gauge History &amp; Inspection System</h3>
-            <p class="project-subtext">Developed a digital gauge tracking workflow to improve calibration monitoring, inspection traceability, and GD&amp;T record keeping in precision manufacturing environments.</p>
-
-            <div class="project-card-footer">
-              <div class="project-skill-pills">
-                <span class="skill-pill">Precision Gauges</span>
-                <span class="skill-pill">GD&amp;T</span>
-                <span class="skill-pill">Calibration Workflow</span>
-                <span class="skill-pill">Quality Control</span>
+              <div class="more-card-content">
+                <span class="company-badge">ACE Inotec, Bengaluru</span>
+                <h4 class="more-card-title">OEE Optimization Excel Tool</h4>
+                <p class="more-card-desc">"Excel-based Overall Equipment Effectiveness tracking system developed to monitor production performance and production efficiency."</p>
+                <div class="project-skill-pills">
+                  <span class="skill-pill">Excel</span>
+                  <span class="skill-pill">OEE</span>
+                  <span class="skill-pill">Manufacturing</span>
+                  <span class="skill-pill">Data Analysis</span>
+                </div>
+                <button class="case-study-link view-case-study-btn" data-project-id="p3">VIEW CASE STUDY →</button>
               </div>
-              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
-            </div>
-          </div>
+            </article>
 
+            <!-- Project 04: Gauge History & Inspection System -->
+            <article class="more-project-card project-item-card" data-categories="manufacturing qa" data-project-id="p4">
+              <div class="card-meta-bar">
+                <span class="p-num">PROJECT_04</span>
+                <span class="p-cat">QUALITY / MANUFACTURING</span>
+              </div>
+              <div class="more-img-box">
+                <img src="gauge_system.jpg" alt="Gauge History & Inspection System" class="more-img">
+                <div class="img-hover-overlay">
+                  <span class="hover-text">VIEW PROJECT →</span>
+                </div>
+              </div>
+              <div class="more-card-content">
+                <span class="company-badge">ACE Inotec, Bengaluru</span>
+                <h4 class="more-card-title">Gauge History &amp; Inspection System</h4>
+                <p class="more-card-desc">"Digital workflow for tracking gauge usage, inspection history, and quality-related data during manufacturing operations."</p>
+                <div class="project-skill-pills">
+                  <span class="skill-pill">Quality Engineering</span>
+                  <span class="skill-pill">Inspection</span>
+                  <span class="skill-pill">Excel</span>
+                  <span class="skill-pill">Manufacturing</span>
+                </div>
+                <button class="case-study-link view-case-study-btn" data-project-id="p4">VIEW CASE STUDY →</button>
+              </div>
+            </article>
+
+            <!-- Project 05: Drone Lab Mechanical Component -->
+            <article class="more-project-card project-item-card" data-categories="cad manufacturing" data-project-id="p5">
+              <div class="card-meta-bar">
+                <span class="p-num">PROJECT_05</span>
+                <span class="p-cat">CAD &amp; DESIGN</span>
+              </div>
+              <div class="more-img-box">
+                <img src="drone_catia.jpg" alt="Drone Lab Mechanical Component" class="more-img">
+                <div class="img-hover-overlay">
+                  <span class="hover-text">VIEW PROJECT →</span>
+                </div>
+              </div>
+              <div class="more-card-content">
+                <h4 class="more-card-title">Drone Lab Mechanical Component</h4>
+                <p class="more-card-desc">"Designed and fabricated a functional mechanical component for drone laboratory applications using CAD and additive manufacturing."</p>
+                <div class="project-skill-pills">
+                  <span class="skill-pill">CATIA V5</span>
+                  <span class="skill-pill">3D Printing</span>
+                  <span class="skill-pill">Mechanical Design</span>
+                </div>
+                <button class="case-study-link view-case-study-btn" data-project-id="p5">VIEW CASE STUDY →</button>
+              </div>
+            </article>
+
+            <!-- Project 06: VenueVista -->
+            <article class="more-project-card project-item-card" data-categories="web" data-project-id="p6">
+              <div class="card-meta-bar">
+                <span class="p-num">PROJECT_06</span>
+                <span class="p-cat">WEB DEVELOPMENT</span>
+              </div>
+              <div class="more-img-box">
+                <img src="venuevista.jpg" alt="VenueVista" class="more-img">
+                <div class="img-hover-overlay">
+                  <span class="hover-text">VIEW PROJECT →</span>
+                </div>
+              </div>
+              <div class="more-card-content">
+                <h4 class="more-card-title">VenueVista</h4>
+                <p class="more-card-desc">"Web-based auditorium booking platform providing real-time availability and booking management."</p>
+                <div class="project-skill-pills">
+                  <span class="skill-pill">HTML</span>
+                  <span class="skill-pill">CSS</span>
+                  <span class="skill-pill">Java</span>
+                  <span class="skill-pill">Web Development</span>
+                </div>
+                <button class="case-study-link view-case-study-btn" data-project-id="p6">VIEW CASE STUDY →</button>
+              </div>
+            </article>
+
+            <!-- Project 07: AgriTech -->
+            <article class="more-project-card project-item-card span-two-col" data-categories="web" data-project-id="p7">
+              <div class="card-meta-bar">
+                <span class="p-num">PROJECT_07</span>
+                <span class="p-cat">WEB / AGRITECH</span>
+              </div>
+              <div class="more-img-box">
+                <img src="agritech.jpg" alt="AgriTech" class="more-img">
+                <div class="img-hover-overlay">
+                  <span class="hover-text">VIEW PROJECT →</span>
+                </div>
+              </div>
+              <div class="more-card-content">
+                <h4 class="more-card-title">AgriTech</h4>
+                <p class="more-card-desc">"Web-based agricultural equipment rental platform designed to connect farmers with available machinery."</p>
+                <div class="project-skill-pills">
+                  <span class="skill-pill">HTML</span>
+                  <span class="skill-pill">CSS</span>
+                  <span class="skill-pill">Web Development</span>
+                  <span class="skill-pill">Agritech</span>
+                </div>
+                <button class="case-study-link view-case-study-btn" data-project-id="p7">VIEW CASE STUDY →</button>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- COMPACT PROJECT STATS STRIP AT BOTTOM -->
+        <div class="project-stats-strip">
+          <div class="pstat-item">
+            <span class="pstat-val">06+</span>
+            <span class="pstat-lbl">PROJECTS</span>
+          </div>
+          <div class="pstat-divider">/</div>
+          <div class="pstat-item">
+            <span class="pstat-val">04+</span>
+            <span class="pstat-lbl">ENGINEERING DOMAINS</span>
+          </div>
+          <div class="pstat-divider">/</div>
+          <div class="pstat-item">
+            <span class="pstat-val">03+</span>
+            <span class="pstat-lbl">CAD / DESIGN TOOLS</span>
+          </div>
+          <div class="pstat-divider">/</div>
+          <div class="pstat-item">
+            <span class="pstat-val">02+</span>
+            <span class="pstat-lbl">RESEARCH PROJECTS</span>
+          </div>
         </div>
 
       </div>
@@ -584,6 +726,6 @@
     <p>&copy; 2026 POSINA SIVA SAI VENKAT | Mechanical Engineering Portfolio</p>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
