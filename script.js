@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   PROJECT DATA STORE FOR CASE STUDY MODAL OVERLAY (5 FEATURED PROJECTS)
+   PROJECT DATA STORE FOR CASE STUDY MODAL OVERLAY (4 FEATURED PROJECTS)
    Uses strictly factual candidate background data.
    ========================================================================== */
 const projectsData = {
@@ -47,20 +47,6 @@ const projectsData = {
     learning: "Mastered biomimetic porous lattice modeling techniques and FDM 3D printing slice parameters for medical engineering applications."
   },
   p3: {
-    title: "OEE Optimization Excel Tool",
-    categoryTag: "MANUFACTURING / DATA ANALYSIS",
-    image: "oee_tool.jpg",
-    overview: "Excel-based Overall Equipment Effectiveness tracking system developed to monitor production performance and identify efficiency losses.",
-    role: "Quality & Industrial Intern (ACE Inotec, Bengaluru)",
-    tools: ["Excel", "OEE", "Manufacturing", "Data Analysis"],
-    details: [
-      "Formulated spreadsheet data structures to capture availability, performance, and quality metrics.",
-      "Tracked machine downtime reasons and production line cycle efficiencies.",
-      "Generated automated visual KPI reports for manufacturing management review."
-    ],
-    learning: "Understood key shopfloor manufacturing operational metrics and how data tracking directly impacts production efficiency."
-  },
-  p4: {
     title: "Gauge History & Inspection System",
     categoryTag: "QUALITY / MANUFACTURING",
     image: "gauge_system.jpg",
@@ -74,7 +60,7 @@ const projectsData = {
     ],
     learning: "Gained rigorous exposure to GD&T callout interpretation, precision metrology calibration, and industrial quality assurance workflows."
   },
-  p5: {
+  p4: {
     title: "Drone Lab Mechanical Component",
     categoryTag: "CAD & 3D PRINTING",
     image: "drone_catia.jpg",
