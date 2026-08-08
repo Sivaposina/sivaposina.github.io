@@ -159,141 +159,85 @@
         <div class="projects-grid-layout">
           
           <!-- PROJECT 1: Machine Learning Electrospinning -->
-          <div class="project-sketch-card" data-category="ml">
+          <div class="project-sketch-card clickable-card" data-category="ml" data-project-id="p1">
             <div class="card-top-tag-row">
               <span class="category-pill-badge">AI &amp; ML</span>
+              <span class="right-spec-tag">[ PROCESS OPTIMIZATION ]</span>
             </div>
 
             <h3 class="project-title">Machine Learning Model for Electrospinning Optimization</h3>
-            <p class="project-subtext">Predicting PVDF fiber diameter using process parameters &amp; ML regression</p>
+            <p class="project-subtext">Developed machine learning regression models to predict PVDF polymer fiber diameter using electrospinning process parameters (voltage, flow rate, concentration, tip-to-collector distance).</p>
 
-            <div class="project-inner-preview">
-              <img src="electrospinning.jpg" alt="Electrospinning ML Sketch" class="preview-img">
-              
-              <!-- Interactive Live ML Simulator Container -->
-              <div class="preview-interactive-box">
-                <div class="interactive-tag-title">📊 Machine Learning &amp; Data Workflow</div>
-                <p class="interactive-sub">[ Python · Scikit-Learn · PVDF Fiber Analysis ]</p>
-                <canvas id="electrospinning-canvas" width="360" height="150"></canvas>
-                
-                <div class="mini-control-group">
-                  <label>Applied Voltage (kV): <span id="voltage-val">18</span></label>
-                  <input type="range" id="voltage-input" min="10" max="30" value="18" step="1">
-                </div>
-                <div class="sim-readout-pill">
-                  PREDICTED FIBER: <strong id="fiber-diameter-output">245.8 nm</strong>
-                </div>
+            <div class="project-card-footer">
+              <div class="project-skill-pills">
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">Scikit-Learn</span>
+                <span class="skill-pill">Machine Learning</span>
+                <span class="skill-pill">Data Processing</span>
               </div>
-            </div>
-
-            <div class="project-skill-pills">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">Scikit-Learn</span>
-              <span class="skill-pill">Machine Learning</span>
-              <span class="skill-pill">Data Processing</span>
+              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
             </div>
           </div>
 
           <!-- PROJECT 2: 3D-Printed Artificial Bone Scaffold -->
-          <div class="project-sketch-card" data-category="bio">
+          <div class="project-sketch-card clickable-card" data-category="bio" data-project-id="p2">
             <div class="card-top-tag-row">
               <span class="category-pill-badge">CAD &amp; Bio-Mfg</span>
-              <span class="right-spec-tag">[ 3D CAD ]</span>
+              <span class="right-spec-tag">[ 3D PRINTING ]</span>
             </div>
 
             <h3 class="project-title">3D-Printed Artificial Bone Scaffold</h3>
-            <p class="project-subtext">Porous biomimetic scaffold design using CAD tools &amp; additive manufacturing</p>
+            <p class="project-subtext">Designed and fabricated porous biomimetic bone scaffold structures using CAD tools and additive manufacturing. Applied lightweight geometry optimization for osteointegration.</p>
 
-            <div class="project-inner-preview">
-              <img src="bone_scaffold.jpg" alt="Artificial Bone Scaffold" class="preview-img">
-
-              <div class="preview-interactive-box">
-                <div class="interactive-tag-title">🦴 3D Lattice Wireframe Generator</div>
-                <p class="interactive-sub">[ 3D CAD WIREFRAME: SCAFFOLD ]</p>
-                <canvas id="scaffold-canvas" width="360" height="150"></canvas>
-
-                <div class="mini-control-group">
-                  <label>Target Porosity (%): <span id="porosity-val">65</span></label>
-                  <input type="range" id="porosity-input" min="40" max="85" value="65" step="1">
-                </div>
-                <div class="sim-readout-pill">
-                  STIFFNESS: <strong id="stiffness-val">1.42 GPa</strong> | WT REDUCTION: <strong id="weight-red-val">65.0%</strong>
-                </div>
+            <div class="project-card-footer">
+              <div class="project-skill-pills">
+                <span class="skill-pill">Fusion 360</span>
+                <span class="skill-pill">CAD Modeling</span>
+                <span class="skill-pill">Additive Manufacturing</span>
               </div>
-            </div>
-
-            <div class="project-skill-pills">
-              <span class="skill-pill">Fusion 360</span>
-              <span class="skill-pill">CAD Modeling</span>
-              <span class="skill-pill">Additive Manufacturing</span>
+              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
             </div>
           </div>
 
           <!-- PROJECT 3: Drone Component Design using CATIA -->
-          <div class="project-sketch-card" data-category="cad">
+          <div class="project-sketch-card clickable-card" data-category="cad" data-project-id="p3">
             <div class="card-top-tag-row">
               <span class="category-pill-badge">CAD &amp; Design</span>
-              <span class="right-spec-tag">[ CATIA V5 ]</span>
+              <span class="right-spec-tag">[ CATIA V5 &amp; FEA ]</span>
             </div>
 
             <h3 class="project-title">Drone Component Design using CATIA &amp; 3D Printing</h3>
-            <p class="project-subtext">Structural lightweighting, ANSYS FEA simulation, &amp; prototype fabrication</p>
+            <p class="project-subtext">Designed a lightweight drone component in CATIA V5, executed FEA stress analysis in ANSYS, and fabricated physical prototypes using FDM 3D printing.</p>
 
-            <div class="project-inner-preview">
-              <img src="drone_catia.jpg" alt="Drone CATIA Schematic" class="preview-img">
-
-              <div class="preview-interactive-box">
-                <div class="interactive-tag-title">🛸 3D Rotating CAD Wireframe</div>
-                <p class="interactive-sub">[ CATIA V5 Component FEA Mesh ]</p>
-                <canvas id="drone-canvas" width="360" height="150"></canvas>
-
-                <div class="drone-controls-row">
-                  <button id="drone-rotate-btn" class="pill-btn sm-pill">AUTO-ROTATE</button>
-                  <button id="drone-exploded-btn" class="pill-btn sm-pill">EXPLODED</button>
-                  <button id="drone-stress-btn" class="pill-btn sm-pill">ANSYS STRESS</button>
-                </div>
+            <div class="project-card-footer">
+              <div class="project-skill-pills">
+                <span class="skill-pill">CATIA V5</span>
+                <span class="skill-pill">ANSYS Structural</span>
+                <span class="skill-pill">Rapid Prototyping</span>
+                <span class="skill-pill">DFM</span>
               </div>
-            </div>
-
-            <div class="project-skill-pills">
-              <span class="skill-pill">CATIA V5</span>
-              <span class="skill-pill">ANSYS Structural</span>
-              <span class="skill-pill">Rapid Prototyping</span>
-              <span class="skill-pill">DFM</span>
+              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
             </div>
           </div>
 
           <!-- PROJECT 4: Gauge History & Inspection System -->
-          <div class="project-sketch-card" data-category="qa">
+          <div class="project-sketch-card clickable-card" data-category="qa" data-project-id="p4">
             <div class="card-top-tag-row">
               <span class="category-pill-badge">Quality QA</span>
-              <span class="right-spec-tag">[ METROLOGY ]</span>
+              <span class="right-spec-tag">[ METROLOGY &amp; GD&amp;T ]</span>
             </div>
 
             <h3 class="project-title">Gauge History &amp; Inspection System</h3>
-            <p class="project-subtext">Digital gauge tracking workflow, calibration monitoring &amp; inspection traceability</p>
+            <p class="project-subtext">Developed a digital gauge tracking workflow to improve calibration monitoring, inspection traceability, and GD&amp;T record keeping in precision manufacturing environments.</p>
 
-            <div class="project-inner-preview">
-              <div class="preview-interactive-box standalone-box">
-                <div class="interactive-tag-title">📏 Virtual Vernier Caliper Inspection Simulator</div>
-                <p class="interactive-sub">[ Target Specification: 12.500 ± 0.050 mm ]</p>
-                <canvas id="caliper-canvas" width="360" height="130"></canvas>
-
-                <div class="mini-control-group">
-                  <label>Jaw Position (mm): <span id="caliper-val">12.500</span></label>
-                  <input type="range" id="caliper-slider" min="0" max="25" value="12.5" step="0.005">
-                </div>
-                <div class="sim-readout-pill">
-                  INSPECTION STATUS: <strong id="insp-status-badge">PASS [WITHIN TOLERANCE]</strong>
-                </div>
+            <div class="project-card-footer">
+              <div class="project-skill-pills">
+                <span class="skill-pill">Precision Gauges</span>
+                <span class="skill-pill">GD&amp;T</span>
+                <span class="skill-pill">Calibration Workflow</span>
+                <span class="skill-pill">Quality Control</span>
               </div>
-            </div>
-
-            <div class="project-skill-pills">
-              <span class="skill-pill">Precision Gauges</span>
-              <span class="skill-pill">GD&amp;T</span>
-              <span class="skill-pill">Calibration Workflow</span>
-              <span class="skill-pill">Quality Control</span>
+              <button class="pill-btn solid-black-btn sm-pill view-details-btn">VIEW DETAILS 🔍</button>
             </div>
           </div>
 
@@ -528,6 +472,50 @@
     </section>
 
   </main>
+
+  <!-- PROJECT DETAIL SPECIFICATION MODAL -->
+  <div id="project-detail-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-content project-sketch-card detail-modal-card">
+      <button id="close-project-modal-btn" class="close-btn" aria-label="Close project modal">&times;</button>
+      
+      <div class="modal-header project-modal-header">
+        <div class="modal-tag-row">
+          <span id="pmodal-category-badge" class="category-pill-badge">AI &amp; ML</span>
+          <span id="pmodal-spec-tag" class="right-spec-tag">[ PROCESS OPTIMIZATION ]</span>
+        </div>
+        <h2 id="pmodal-title" class="pmodal-title">Machine Learning Model for Electrospinning Optimization</h2>
+      </div>
+
+      <div class="project-modal-body">
+        <div class="pmodal-description-box">
+          <h3>PROJECT OVERVIEW</h3>
+          <p id="pmodal-overview">Detailed overview text...</p>
+        </div>
+
+        <div class="pmodal-highlights-box">
+          <h3>KEY TECHNICAL HIGHLIGHTS</h3>
+          <ul id="pmodal-highlights" class="sketch-bullets">
+            <!-- Bullet points populated dynamically -->
+          </ul>
+        </div>
+
+        <!-- Image Gallery Container Ready for User Uploaded Images -->
+        <div class="pmodal-gallery-box">
+          <h3>PROJECT SCHEMATICS &amp; VISUAL MEDIA</h3>
+          <div id="pmodal-gallery-grid" class="pmodal-gallery-grid">
+            <!-- Gallery images dynamically inserted here -->
+          </div>
+        </div>
+
+        <div class="pmodal-skills-box">
+          <h3>TOOLS &amp; METHODOLOGIES</h3>
+          <div id="pmodal-skill-pills" class="project-skill-pills">
+            <!-- Skill pills populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- RESUME MODAL -->
   <div id="resume-modal" class="modal-overlay" style="display:none;">

@@ -291,7 +291,7 @@ body {
   gap: 0.8rem;
 }
 
-/* PHOTO CARD & STICKY NOTE - MATCHING USER SPECIFICATION EXACTLY */
+/* PHOTO CARD & STICKY NOTE */
 .hero-visual-block {
   display: flex;
   justify-content: center;
@@ -450,7 +450,7 @@ body {
 .projects-grid-layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2.2rem;
+  gap: 2rem;
 }
 
 .project-sketch-card {
@@ -463,6 +463,10 @@ body {
   display: flex;
   flex-direction: column;
   filter: url('#sketch-filter');
+}
+
+.project-sketch-card.clickable-card {
+  cursor: pointer;
 }
 
 .project-sketch-card:hover {
@@ -496,95 +500,28 @@ body {
 
 .project-title {
   font-family: var(--font-title);
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
 }
 
 .project-subtext {
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  margin-bottom: 1.2rem;
-}
-
-/* INNER PREVIEW CONTAINER */
-.project-inner-preview {
-  background: var(--preview-bg);
-  border: 2px dashed #94A3B8;
-  border-radius: 12px;
-  padding: 1rem;
-  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
   flex-grow: 1;
 }
 
-.preview-img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1.5px solid var(--border-color);
-  margin-bottom: 0.8rem;
-  filter: grayscale(100%) contrast(110%);
-}
-
-.preview-interactive-box {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border-color);
-  border-radius: 8px;
-  padding: 0.8rem;
-  text-align: center;
-}
-
-.interactive-tag-title {
-  font-family: var(--font-hand);
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 0.1rem;
-}
-
-.interactive-sub {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin-bottom: 0.6rem;
-}
-
-.preview-interactive-box canvas {
-  width: 100%;
-  height: auto;
-  background: #0F172A;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 0.6rem;
-}
-
-.mini-control-group {
-  text-align: left;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  margin-bottom: 0.4rem;
-}
-
-.mini-control-group input[type="range"] {
-  width: 100%;
-  accent-color: var(--border-color);
-}
-
-.sim-readout-pill {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  background: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  margin-top: 0.4rem;
-}
-
-.drone-controls-row {
+.project-card-footer {
   display: flex;
-  gap: 0.4rem;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1.5px dashed var(--border-color);
 }
 
 .project-skill-pills {
@@ -751,9 +688,9 @@ body {
   text-decoration: underline;
 }
 
-/* RESUME MODAL */
+/* MODAL OVERLAY & PROJECT DETAIL MODAL */
 .modal-overlay {
-  position. fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -775,6 +712,11 @@ body {
   position: relative;
 }
 
+.detail-modal-card {
+  max-width: 850px;
+  padding: 2rem;
+}
+
 .close-btn {
   position: absolute;
   top: 1rem;
@@ -784,15 +726,111 @@ body {
   border: none;
   color: var(--text-main);
   cursor: pointer;
+  z-index: 10;
 }
 
 .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--border-color);
+}
+
+.project-modal-header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.modal-tag-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.pmodal-title {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.project-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
+.pmodal-description-box h3,
+.pmodal-highlights-box h3,
+.pmodal-gallery-box h3,
+.pmodal-skills-box h3 {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.pmodal-description-box p {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+
+.sketch-bullets {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sketch-bullets li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+.sketch-bullets li::before {
+  content: "✏";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.85rem;
+}
+
+/* Gallery Grid for User Uploaded Images */
+.pmodal-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.pmodal-gallery-item {
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--preview-bg);
+  position: relative;
+}
+
+.pmodal-gallery-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.pmodal-gallery-placeholder {
+  border: 2px dashed #94A3B8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--preview-bg);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
 }
 
 .resume-hero-strip {

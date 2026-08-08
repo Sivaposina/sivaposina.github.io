@@ -5,15 +5,73 @@
 document.addEventListener('DOMContentLoaded', () => {
   initBackgroundCanvas();
   initThemeToggle();
-  initAudioSynth();
   initProjectFilters();
-  initElectrospinningSim();
-  initScaffoldSim();
-  initDroneCADSim();
-  initCaliperSim();
+  initProjectDetailModal();
   initResumeModal();
   initContactForm();
 });
+
+/* ==========================================================================
+   PROJECT DATA STORE FOR DETAIL MODAL OVERLAY
+   ========================================================================== */
+const projectsData = {
+  p1: {
+    category: "AI & ML",
+    specTag: "[ PROCESS OPTIMIZATION ]",
+    title: "Machine Learning Model for Electrospinning Optimization",
+    overview: "Developed predictive machine learning regression models to optimize PVDF (Polyvinylidene Fluoride) polymer fiber diameter produced during electrospinning processes. Evaluated multi-variable experimental parameters to establish precise control over fiber morphology and nanoscale distribution.",
+    highlights: [
+      "Engineered data preprocessing, feature selection, and cross-validation pipelines in Python.",
+      "Mapped relationships between Applied Voltage (10-30 kV), Flow Rate (0.2-3.0 mL/h), Polymer Concentration (10-25%), and Tip-to-Collector Distance.",
+      "Achieved high predictive R² accuracy score using Scikit-Learn Random Forest and Gradient Boosting regressors.",
+      "Optimized nanofiber diameter predictability to support high-efficiency filtration & piezo-electric sensor research."
+    ],
+    skills: ["Python", "Scikit-Learn", "Machine Learning", "Data Processing", "Regression Modeling", "Feature Engineering"],
+    images: [] // User will provide images here!
+  },
+  p2: {
+    category: "CAD & Bio-Mfg",
+    specTag: "[ 3D PRINTING & LATTICE ]",
+    title: "3D-Printed Artificial Bone Scaffold",
+    overview: "Designed and fabricated lightweight porous biomimetic scaffold structures using advanced CAD software and additive manufacturing (3D Printing). Focused on structural geometry optimization to enhance osteointegration and cellular ingrowth for tissue engineering applications.",
+    highlights: [
+      "Created parametric porous unit-cell lattice geometries (Cubic, Gyroid, and Honeycomb topologies) using CAD tools.",
+      "Applied mass reduction and surface area-to-volume ratio optimization while preserving required mechanical stiffness.",
+      "Fabricated prototype scaffolds using high-precision 3D printing additive manufacturing.",
+      "Evaluated compressive load resistance and pore interconnectivity for biomedical alignment."
+    ],
+    skills: ["Fusion 360", "CAD Modeling", "Additive Manufacturing", "Porous Geometry", "Lightweighting", "3D Printing"],
+    images: [] // User will provide images here!
+  },
+  p3: {
+    category: "CAD & Design",
+    specTag: "[ CATIA V5 & FEA ]",
+    title: "Drone Component Design using CATIA & 3D Printing",
+    overview: "Engineered an optimized lightweight quadcopter arm and motor mount component in CATIA V5, executed finite element analysis (FEA) in ANSYS to evaluate structural load capacity, and validated the design via physical FDM 3D printing.",
+    highlights: [
+      "Designed parametric 3D solid models and complex surface geometries in CATIA V5 (Part & Assembly Design).",
+      "Performed static structural stress and displacement simulations in ANSYS under maximum rotor thrust conditions.",
+      "Identified stress concentration zones and applied rib reinforcement to prevent mechanical fatigue failure.",
+      "Fabricated functional 3D-printed prototypes following Design for Manufacturing (DFM) principles."
+    ],
+    skills: ["CATIA V5", "ANSYS Structural", "Rapid Prototyping", "DFM", "Finite Element Analysis", "Aerospace Design"],
+    images: [] // User will provide images here!
+  },
+  p4: {
+    category: "Quality QA",
+    specTag: "[ METROLOGY & GD&T ]",
+    title: "Gauge History & Inspection System",
+    overview: "Developed a comprehensive digital gauge tracking and inspection workflow to improve calibration monitoring, metrology record management, and GD&T compliance in high-volume automotive manufacturing.",
+    highlights: [
+      "Established systematic gauge calibration logs for precision micrometers, bore gauges, and height gauges.",
+      "Enhanced inspection record traceability to satisfy rigorous automotive ISO quality assurance standards.",
+      "Applied Geometric Dimensioning and Tolerancing (GD&T) principles to evaluate component drawing callouts.",
+      "Streamlined quality control reporting to reduce defect rates during assembly line inspections."
+    ],
+    skills: ["Precision Gauges", "GD&T", "Calibration Workflow", "Quality Control", "ISO Standards", "Metrology"],
+    images: [] // User will provide images here!
+  }
+};
 
 /* ==========================================================================
    1. FAINT CHARCOAL GRAPHITE BACKGROUND CANVAS
@@ -129,56 +187,7 @@ function initThemeToggle() {
 }
 
 /* ==========================================================================
-   3. AUDIO SYNTH (OPTIONAL PENCIL FX)
-   ========================================================================== */
-let audioCtx = null;
-let soundEnabled = false;
-
-function initAudioSynth() {
-  const soundBtn = document.getElementById('sound-toggle');
-  const icon = document.getElementById('sound-icon');
-
-  soundBtn.addEventListener('click', () => {
-    soundEnabled = !soundEnabled;
-    icon.textContent = soundEnabled ? '🔊' : '🔇';
-    if (soundEnabled && !audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-  });
-
-  document.querySelectorAll('input[type="range"]').forEach(slider => {
-    slider.addEventListener('input', () => {
-      if (soundEnabled && audioCtx) playPencilSound();
-    });
-  });
-}
-
-function playPencilSound() {
-  if (!audioCtx) return;
-  try {
-    const bufferSize = audioCtx.sampleRate * 0.05;
-    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-    const output = buffer.getChannelData(0);
-
-    for (let i = 0; i < bufferSize; i++) {
-      output[i] = (Math.random() * 2 - 1) * 0.04;
-    }
-
-    const whiteNoise = audioCtx.createBufferSource();
-    whiteNoise.buffer = buffer;
-
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.frequency.value = 1400;
-
-    whiteNoise.connect(filter);
-    filter.connect(audioCtx.destination);
-    whiteNoise.start();
-  } catch (e) {}
-}
-
-/* ==========================================================================
-   4. PROJECT CATEGORY FILTER PILLS
+   3. PROJECT CATEGORY FILTER PILLS
    ========================================================================== */
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-pill');
@@ -204,276 +213,100 @@ function initProjectFilters() {
 }
 
 /* ==========================================================================
-   5. ELECTROSPINNING SIMULATOR
+   4. PROJECT DETAIL MODAL HANDLER
    ========================================================================== */
-function initElectrospinningSim() {
-  const canvas = document.getElementById('electrospinning-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+function initProjectDetailModal() {
+  const modal = document.getElementById('project-detail-modal');
+  const closeBtn = document.getElementById('close-project-modal-btn');
+  const projectCards = document.querySelectorAll('.clickable-card');
 
-  const voltageInput = document.getElementById('voltage-input');
-  const voltageVal = document.getElementById('voltage-val');
-  const fiberOutput = document.getElementById('fiber-diameter-output');
+  if (!modal || !closeBtn) return;
 
-  function update() {
-    const voltage = parseFloat(voltageInput.value);
-    voltageVal.textContent = voltage;
-
-    const diameter = (280 - (voltage * 4.2)).toFixed(1);
-    fiberOutput.textContent = `${diameter} nm`;
-
-    render(voltage, diameter);
-  }
-
-  voltageInput.addEventListener('input', update);
-
-  function render(voltage, diameter) {
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-
-    ctx.fillStyle = '#0F172A';
-    ctx.fillRect(0, 0, w, h);
-
-    // Emitter needle
-    ctx.fillStyle = '#E2E8F0';
-    ctx.fillRect(20, h / 2 - 4, 30, 8);
-
-    // Collector
-    ctx.fillStyle = '#38BDF8';
-    ctx.fillRect(w - 25, 15, 8, h - 30);
-
-    // Fibers
-    ctx.strokeStyle = '#F8FAFC';
-    ctx.lineWidth = Math.max(0.8, (diameter / 160));
-
-    for (let i = 0; i < 6; i++) {
-      ctx.beginPath();
-      ctx.moveTo(50, h / 2);
-      
-      let curX = 50;
-      let curY = h / 2;
-      const steps = 12;
-      const stepW = (w - 75) / steps;
-
-      for (let s = 1; s <= steps; s++) {
-        curX += stepW;
-        const amp = (s / steps) * (voltage * 0.8);
-        curY = h / 2 + Math.sin(s * 0.9 + Date.now() * 0.006 + i) * amp;
-        ctx.lineTo(curX, curY);
+  projectCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      const projectId = card.getAttribute('data-project-id');
+      const data = projectsData[projectId];
+      if (data) {
+        openProjectModal(data);
       }
-      ctx.globalAlpha = 0.75;
-      ctx.stroke();
-    }
-  }
-  update();
-}
-
-/* ==========================================================================
-   6. BONE SCAFFOLD SIMULATOR
-   ========================================================================== */
-function initScaffoldSim() {
-  const canvas = document.getElementById('scaffold-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const porosityInput = document.getElementById('porosity-input');
-  const porosityVal = document.getElementById('porosity-val');
-  const stiffnessVal = document.getElementById('stiffness-val');
-  const weightRedVal = document.getElementById('weight-red-val');
-
-  function update() {
-    const porosity = parseFloat(porosityInput.value);
-    porosityVal.textContent = porosity;
-    weightRedVal.textContent = `${porosity.toFixed(1)}%`;
-
-    const estStiffness = (14.0 * Math.pow((1 - porosity / 100), 2)).toFixed(2);
-    stiffnessVal.textContent = `${estStiffness} GPa`;
-
-    render(porosity);
-  }
-
-  porosityInput.addEventListener('input', update);
-
-  function render(porosity) {
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-
-    ctx.fillStyle = '#0F172A';
-    ctx.fillRect(0, 0, w, h);
-
-    const strokeWidth = Math.max(1, (100 - porosity) / 12);
-    ctx.strokeStyle = '#38BDF8';
-    ctx.lineWidth = strokeWidth;
-
-    const gridSize = 25;
-    for (let x = 40; x < w - 40; x += gridSize) {
-      for (let y = 20; y < h - 20; y += gridSize) {
-        ctx.strokeRect(x, y, gridSize - 4, gridSize - 4);
-      }
-    }
-  }
-  update();
-}
-
-/* ==========================================================================
-   7. DRONE CAD SIMULATOR
-   ========================================================================== */
-function initDroneCADSim() {
-  const canvas = document.getElementById('drone-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const rotateBtn = document.getElementById('drone-rotate-btn');
-  const explodedBtn = document.getElementById('drone-exploded-btn');
-  const stressBtn = document.getElementById('drone-stress-btn');
-
-  let autoRotate = true;
-  let exploded = false;
-  let stressMode = false;
-  let rotX = 0.5, rotY = 0.5;
-
-  rotateBtn.addEventListener('click', () => {
-    autoRotate = !autoRotate;
-    rotateBtn.classList.toggle('solid-black-btn', autoRotate);
-  });
-
-  explodedBtn.addEventListener('click', () => {
-    exploded = !exploded;
-    explodedBtn.classList.toggle('solid-black-btn', exploded);
-  });
-
-  stressBtn.addEventListener('click', () => {
-    stressMode = !stressMode;
-    stressBtn.classList.toggle('solid-black-btn', stressMode);
-  });
-
-  const baseNodes = [
-    {x: -50, y: -15, z: -15}, {x: 50, y: -15, z: -15},
-    {x: 50, y: 15, z: -15}, {x: -50, y: 15, z: -15},
-    {x: -50, y: -15, z: 15}, {x: 50, y: -15, z: 15},
-    {x: 50, y: 15, z: 15}, {x: -50, y: 15, z: 15},
-    {x: 75, y: -25, z: 0}, {x: 75, y: 25, z: 0}, {x: 100, y: 0, z: 0}
-  ];
-
-  const edges = [
-    [0,1], [1,2], [2,3], [3,0],
-    [4,5], [5,6], [6,7], [7,4],
-    [0,4], [1,5], [2,6], [3,7],
-    [1,8], [2,9], [8,10], [9,10]
-  ];
-
-  function render() {
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-
-    ctx.fillStyle = '#0F172A';
-    ctx.fillRect(0, 0, w, h);
-
-    if (autoRotate) rotY += 0.015;
-
-    const projected = baseNodes.map((p, idx) => {
-      let x = p.x + (exploded && idx >= 8 ? 20 : 0);
-      let y = p.y;
-      let z = p.z;
-
-      let cosY = Math.cos(rotY), sinY = Math.sin(rotY);
-      let x1 = x * cosY - z * sinY;
-      let z1 = x * sinY + z * cosY;
-
-      let cosX = Math.cos(rotX), sinX = Math.sin(rotX);
-      let y2 = y * cosX - z1 * sinX;
-      let z2 = y * sinX + z1 * cosX;
-
-      const scale = 180 / (180 + z2);
-      return { x: w / 2 + x1 * scale, y: h / 2 + y2 * scale };
     });
+  });
 
-    edges.forEach((edge, i) => {
-      const p1 = projected[edge[0]];
-      const p2 = projected[edge[1]];
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
 
-      ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
-      ctx.strokeStyle = stressMode ? (i > 11 ? '#EF4444' : '#3B82F6') : '#38BDF8';
-      ctx.lineWidth = stressMode && i > 11 ? 2.5 : 1.2;
-      ctx.stroke();
-    });
-
-    requestAnimationFrame(render);
-  }
-  render();
-}
-
-/* ==========================================================================
-   8. VERNIER CALIPER SIMULATOR
-   ========================================================================== */
-function initCaliperSim() {
-  const canvas = document.getElementById('caliper-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const slider = document.getElementById('caliper-slider');
-  const caliperVal = document.getElementById('caliper-val');
-  const statusBadge = document.getElementById('insp-status-badge');
-
-  function update() {
-    const pos = parseFloat(slider.value);
-    caliperVal.textContent = pos.toFixed(3);
-
-    const diff = Math.abs(pos - 12.500);
-    if (diff <= 0.050) {
-      statusBadge.textContent = 'PASS [WITHIN TOLERANCE]';
-      statusBadge.style.color = '#16A34A';
-    } else {
-      statusBadge.textContent = `REJECT [DEV: ${(pos - 12.500).toFixed(3)} mm]`;
-      statusBadge.style.color = '#DC2626';
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
     }
+  });
 
-    render(pos);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
+function openProjectModal(data) {
+  const modal = document.getElementById('project-detail-modal');
+  
+  document.getElementById('pmodal-category-badge').textContent = data.category;
+  document.getElementById('pmodal-spec-tag').textContent = data.specTag;
+  document.getElementById('pmodal-title').textContent = data.title;
+  document.getElementById('pmodal-overview').textContent = data.overview;
+
+  // Populate bullet highlights
+  const highlightsEl = document.getElementById('pmodal-highlights');
+  highlightsEl.innerHTML = '';
+  data.highlights.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    highlightsEl.appendChild(li);
+  });
+
+  // Populate skill pills
+  const skillsEl = document.getElementById('pmodal-skill-pills');
+  skillsEl.innerHTML = '';
+  data.skills.forEach(skill => {
+    const span = document.createElement('span');
+    span.className = 'skill-pill lg';
+    span.textContent = skill;
+    skillsEl.appendChild(span);
+  });
+
+  // Populate image gallery container
+  const galleryEl = document.getElementById('pmodal-gallery-grid');
+  galleryEl.innerHTML = '';
+
+  if (data.images && data.images.length > 0) {
+    data.images.forEach(imgSrc => {
+      const div = document.createElement('div');
+      div.className = 'pmodal-gallery-item';
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = data.title;
+      div.appendChild(img);
+      galleryEl.appendChild(div);
+    });
+  } else {
+    // Show clean placeholder slot ready for user images
+    const placeholder = document.createElement('div');
+    placeholder.className = 'pmodal-gallery-placeholder';
+    placeholder.innerHTML = '📁 <em>Project images ready to be added here upon receipt.</em>';
+    galleryEl.appendChild(placeholder);
   }
 
-  slider.addEventListener('input', update);
-
-  function render(val) {
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-
-    ctx.fillStyle = '#0F172A';
-    ctx.fillRect(0, 0, w, h);
-
-    // Main beam
-    ctx.fillStyle = '#94A3B8';
-    ctx.fillRect(15, 45, w - 30, 18);
-
-    // Fixed jaw
-    ctx.fillStyle = '#CBD5E1';
-    ctx.fillRect(25, 30, 12, 70);
-
-    // Sliding jaw
-    const jawX = 25 + 12 + (val * 9);
-    ctx.fillStyle = '#64748B';
-    ctx.fillRect(jawX, 30, 15, 70);
-
-    // Cylinder
-    ctx.fillStyle = '#F59E0B';
-    ctx.fillRect(37, 52, val * 9, 30);
-
-    // Digital readout
-    ctx.font = '12px "Space Mono", monospace';
-    ctx.fillStyle = '#4ADE80';
-    ctx.textAlign = 'center';
-    ctx.fillText(`${val.toFixed(3)} mm`, w / 2, 25);
-  }
-  update();
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
 
 /* ==========================================================================
-   9. MODAL & CONTACT FORM
+   5. RESUME MODAL & CONTACT FORM
    ========================================================================== */
 function initResumeModal() {
   const modal = document.getElementById('resume-modal');
@@ -484,14 +317,19 @@ function initResumeModal() {
 
   openBtn.addEventListener('click', () => {
     modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
   });
 
   closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
   });
 
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.style.display = 'none';
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
   });
 }
 
