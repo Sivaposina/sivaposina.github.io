@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   PROJECT DATA STORE FOR CASE STUDY MODAL OVERLAY
-   Uses strictly factual data from candidate background.
+   PROJECT DATA STORE FOR CASE STUDY MODAL OVERLAY (5 FEATURED PROJECTS)
+   Uses strictly factual candidate background data.
    ========================================================================== */
 const projectsData = {
   p1: {
     title: "Machine Learning Model for Electrospinning Optimization",
     categoryTag: "AI & ML / RESEARCH",
     image: "electrospinning.jpg",
-    overview: "Developed predictive machine learning regression models to evaluate process parameters affecting PVDF polymer fiber diameter during electrospinning.",
-    role: "Lead Student Researcher / Machine Learning Engineer",
+    overview: "Predicting PVDF fiber diameter using electrospinning process parameters and machine-learning regression.",
+    role: "Research Intern (IIT Indore)",
     tools: ["Python", "Scikit-Learn", "Machine Learning", "Data Processing", "PVDF", "Electrospinning"],
     details: [
       "Built machine learning regression pipelines in Python using Scikit-Learn.",
@@ -35,7 +35,7 @@ const projectsData = {
     title: "3D-Printed Artificial Bone Scaffold",
     categoryTag: "CAD & BIO-MANUFACTURING",
     image: "bone_scaffold.jpg",
-    overview: "Designed porous biomimetic artificial bone scaffold structures utilizing CAD modeling tools and fabricated physical prototypes through additive manufacturing.",
+    overview: "Porous biomimetic scaffold design using CAD modeling and additive manufacturing.",
     role: "CAD & Additive Manufacturing Designer",
     tools: ["Fusion 360", "CAD Modeling", "3D Printing", "Additive Manufacturing", "Bioengineering"],
     details: [
@@ -48,11 +48,11 @@ const projectsData = {
   },
   p3: {
     title: "OEE Optimization Excel Tool",
-    categoryTag: "MANUFACTURING",
+    categoryTag: "MANUFACTURING / DATA ANALYSIS",
     image: "oee_tool.jpg",
-    overview: "Developed an Excel-based Overall Equipment Effectiveness (OEE) tracking system to monitor production performance and manufacturing efficiency.",
-    role: "Quality & Industrial Engineering Intern (ACE Inotec, Bengaluru)",
-    tools: ["Excel", "OEE", "Manufacturing", "Data Analysis", "Production Planning"],
+    overview: "Excel-based Overall Equipment Effectiveness tracking system developed to monitor production performance and identify efficiency losses.",
+    role: "Quality & Industrial Intern (ACE Inotec, Bengaluru)",
+    tools: ["Excel", "OEE", "Manufacturing", "Data Analysis"],
     details: [
       "Formulated spreadsheet data structures to capture availability, performance, and quality metrics.",
       "Tracked machine downtime reasons and production line cycle efficiencies.",
@@ -64,9 +64,9 @@ const projectsData = {
     title: "Gauge History & Inspection System",
     categoryTag: "QUALITY / MANUFACTURING",
     image: "gauge_system.jpg",
-    overview: "Designed a digital workflow for tracking gauge usage, calibration inspection history, and quality-related data during manufacturing operations.",
+    overview: "Digital workflow for tracking gauge usage, inspection history, and quality-related data during manufacturing operations.",
     role: "Quality Intern (ACE Inotec, Bengaluru)",
-    tools: ["Quality Engineering", "Inspection", "Excel", "Manufacturing", "Precision Gauges", "GD&T"],
+    tools: ["Quality Engineering", "Inspection", "Excel", "Manufacturing"],
     details: [
       "Conducted sample inspections using precision gauges (micrometers, height gauges).",
       "Maintained gauge history calibration logs and equipment traceability records.",
@@ -76,45 +76,17 @@ const projectsData = {
   },
   p5: {
     title: "Drone Lab Mechanical Component",
-    categoryTag: "CAD & DESIGN",
+    categoryTag: "CAD & 3D PRINTING",
     image: "drone_catia.jpg",
-    overview: "Designed and fabricated a functional mechanical component for drone laboratory applications using CATIA V5 and additive manufacturing.",
+    overview: "Designed and fabricated a functional mechanical component for drone laboratory applications using CAD and additive manufacturing.",
     role: "CAD & Structural Designer",
-    tools: ["CATIA V5", "3D Printing", "Mechanical Design", "ANSYS Structural", "DFM"],
+    tools: ["CATIA V5", "3D Printing", "Mechanical Design"],
     details: [
       "Designed 3D parametric component models in CATIA V5.",
       "Conducted structural analysis considerations in ANSYS.",
       "Fabricated physical prototypes using 3D printing following Design for Manufacturing (DFM) guidelines."
     ],
     learning: "Enhanced proficiency in CATIA V5 surface/part modeling and rapid prototyping for lightweight structural components."
-  },
-  p6: {
-    title: "VenueVista",
-    categoryTag: "WEB DEVELOPMENT",
-    image: "venuevista.jpg",
-    overview: "Web-based auditorium booking platform providing real-time availability tracking and booking management.",
-    role: "Web Application Developer",
-    tools: ["HTML", "CSS", "Java", "Web Development"],
-    details: [
-      "Built clean web interfaces for venue and auditorium reservation management.",
-      "Implemented structured backend logic using Java.",
-      "Provided real-time availability status tracking for event management."
-    ],
-    learning: "Strengthened full-stack web software development skills and database logic structuring."
-  },
-  p7: {
-    title: "AgriTech",
-    categoryTag: "WEB / AGRITECH",
-    image: "agritech.jpg",
-    overview: "Web-based agricultural equipment rental platform designed to connect farmers with available farming machinery.",
-    role: "Web Application Developer",
-    tools: ["HTML", "CSS", "Web Development", "Agritech"],
-    details: [
-      "Designed user-friendly web interfaces tailored for agricultural equipment listings.",
-      "Structured rental catalog navigation and equipment availability details.",
-      "Applied responsive UI design principles for accessible web browsing."
-    ],
-    learning: "Explored applying digital web platforms to solve practical agricultural machinery resource sharing challenges."
   }
 };
 
@@ -234,7 +206,7 @@ function initThemeToggle() {
 }
 
 /* ==========================================================================
-   3. CATEGORY FILTERS (ALL, AI/ML, CAD, MANUFACTURING, RESEARCH, WEB)
+   3. CATEGORY FILTERS (ALL, AI/ML, CAD, MANUFACTURING, RESEARCH, QUALITY)
    ========================================================================== */
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-pill');
@@ -250,7 +222,7 @@ function initProjectFilters() {
       projectCards.forEach(card => {
         const categories = (card.getAttribute('data-categories') || '').split(' ');
         if (filterVal === 'all' || categories.includes(filterVal)) {
-          card.style.display = card.classList.contains('featured-project-card') ? 'grid' : 'flex';
+          card.style.display = 'grid';
         } else {
           card.style.display = 'none';
         }
@@ -265,7 +237,7 @@ function initProjectFilters() {
 function initCaseStudyModal() {
   const modal = document.getElementById('project-detail-modal');
   const closeBtn = document.getElementById('close-project-modal-btn');
-  const triggers = document.querySelectorAll('.view-case-study-btn, .editorial-img-box, .more-img-box');
+  const triggers = document.querySelectorAll('.view-case-study-btn, .editorial-img-box');
 
   if (!modal || !closeBtn) return;
 
