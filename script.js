@@ -399,12 +399,12 @@ const certificatesData = {
   },
   "cert-brakes-india": {
     category: "01 // INDUSTRY & RESEARCH",
-    org: "BRAKES INDIA",
-    type: "Internship — Actuation Unit",
-    title: "Industrial Internship Certificate — Actuation Unit",
+    org: "BRAKES INDIA PRIVATE LIMITED",
+    type: "Industrial Internship",
+    title: "Internship Training — Actuation Unit",
     date: "Industrial Internship",
-    description: "Completed in-plant training and industrial internship at Brakes India Actuation Unit, studying precision automotive brake assembly, manufacturing processes, and quality protocols.",
-    image: ""
+    description: "Completed an internship in the Actuation Unit at Brakes India Private Limited, Chennai, from 04 December 2025 to 10 January 2026. Gained practical industrial exposure to automotive actuation systems and manufacturing operations, developing an understanding of how mechanical components and systems are produced and handled in an industrial environment. The experience strengthened practical knowledge, workplace discipline, and familiarity with automotive manufacturing practices.",
+    image: "certificates/brakes_india.png"
   },
   "cert-tvs-motor": {
     category: "01 // INDUSTRY & RESEARCH",
@@ -524,6 +524,8 @@ function openCertificateModal(data) {
   if (data.image && data.image.trim() !== "") {
     imgEl.src = data.image;
     imgEl.style.display = 'block';
+    imgEl.style.cursor = 'pointer';
+    imgEl.onclick = () => { window.open(data.image, '_blank'); };
     placeholderEl.style.display = 'none';
 
     openBtnEl.href = data.image;
