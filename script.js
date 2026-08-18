@@ -604,7 +604,9 @@ function openCertificateModal(data) {
       data.detailsGrid.forEach(item => {
         const div = document.createElement('div');
         div.className = 'cmodal-detail-item';
-        div.innerHTML = `<span class="cmodal-detail-label">${item.label}</span><span class="cmodal-detail-value">${item.value}</span>`;
+        const isMono = (item.label.toUpperCase().includes('ID') || item.label.toUpperCase().includes('CODE') || (item.value.length > 15 && !item.value.includes(' ')));
+        const valClass = isMono ? 'cmodal-detail-value mono-code' : 'cmodal-detail-value';
+        div.innerHTML = `<span class="cmodal-detail-label">${item.label}</span><span class="${valClass}">${item.value}</span>`;
         detailsGridEl.appendChild(div);
       });
       detailsBoxEl.style.display = 'block';
