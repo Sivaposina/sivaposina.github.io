@@ -424,13 +424,54 @@ const certificatesData = {
     image: "certificates/tvs_motor.png"
   },
   "cert-iit-indore": {
-    category: "01 // INDUSTRY & RESEARCH",
+    category: "01 // INDUSTRY & RESEARCH [ RESEARCH INTERNSHIP ]",
     org: "IIT INDORE",
     type: "Research Internship",
-    title: "Research Internship Certificate — ML & Polymer Processing",
-    date: "Research Internship",
-    description: "Conducted research internship under faculty guidance at IIT Indore, developing machine learning regression models for PVDF electrospinning fiber optimization and authoring 3 research paper manuscripts.",
-    image: ""
+    title: "Research Internship",
+    subtitle: "Battery Materials • Electrospinning • Machine Learning",
+    date: "16 May 2026 – 18 July 2026",
+    description: "Completed a research internship at IIT Indore focused on the development and data-driven analysis of electrospun materials for next-generation sodium-ion battery applications. The work involved building a foundation in Li-ion and Na-ion battery technologies, studying electrospinning of polymeric materials, and investigating the influence of processing parameters on electrospun fiber characteristics. The research was further extended into machine learning-based prediction, data analysis, electrolyte ionic conductivity, and Design-Expert-based experimental analysis.",
+    researchFocus: [
+      { num: "01", title: "Battery Fundamentals", text: "Li-ion and Na-ion battery fundamentals, cell components, working principles, and key performance considerations." },
+      { num: "02", title: "Electrospinning", text: "Studied electrospinning fundamentals and the influence of key process parameters such as polymer concentration, applied voltage, flow rate, and tip-to-collector distance." },
+      { num: "03", title: "PVDF Materials", text: "Worked with PVDF-based electrospinning and investigated relationships between processing conditions and electrospun fiber diameter." },
+      { num: "04", title: "Machine Learning", text: "Developed a machine-learning workflow for regression-based prediction of electrospun fiber diameter using experimentally reported process parameters and research literature data." },
+      { num: "05", title: "Electrolyte Ionic Conductivity", text: "Extended the data-driven approach toward prediction and analysis of electrolyte ionic conductivity for sodium-ion battery applications, involving systematic collection and organization of experimental data from research literature." },
+      { num: "06", title: "DOE & Design-Expert", text: "Gained practical exposure to Design-Expert and Design of Experiments (DOE) concepts for experimental analysis, optimization, and research support." }
+    ],
+    researchWorkflow: [
+      "Literature Review",
+      "Data Collection",
+      "Data Cleaning & Preparation",
+      "Feature / Parameter Analysis",
+      "Machine Learning",
+      "Model Evaluation",
+      "DOE & Design-Expert",
+      "Research Documentation"
+    ],
+    keyTechnicalAreas: [
+      "Li-ion Batteries",
+      "Na-ion Batteries",
+      "Electrospinning",
+      "PVDF",
+      "Fiber Diameter Prediction",
+      "Machine Learning",
+      "Regression",
+      "Electrolyte Ionic Conductivity",
+      "DOE",
+      "Design-Expert",
+      "Literature Data Curation"
+    ],
+    researchContribution: "The internship provided experience at the intersection of mechanical/materials engineering, experimental process understanding, data science, and research methodology. A major focus was converting experimental information reported across research literature into structured datasets that could be analyzed using machine-learning and statistical approaches. The work helped develop a stronger understanding of how processing parameters, material characteristics, and experimental responses can be connected through data-driven modelling.",
+    experimentalPrediction: [
+      "Material & Process Parameters",
+      "Electrospinning Conditions",
+      "Fiber Characteristics",
+      "Data Collection",
+      "ML Prediction",
+      "Experimental / Statistical Analysis"
+    ],
+    image: "certificates/iit_indore.png"
   },
   "cert-nptel-micromachining": {
     category: "02 // TECHNICAL CERTIFICATIONS",
@@ -551,6 +592,82 @@ function openCertificateModal(data) {
       detailsBoxEl.style.display = 'block';
     } else {
       detailsBoxEl.style.display = 'none';
+    }
+  }
+
+  // Research Content Box (if available)
+  const researchBoxEl = document.getElementById('cmodal-research-box');
+  if (researchBoxEl) {
+    if (data.researchFocus || data.researchWorkflow || data.keyTechnicalAreas || data.researchContribution || data.experimentalPrediction) {
+      let html = '';
+
+      // 1. RESEARCH FOCUS
+      if (data.researchFocus && data.researchFocus.length > 0) {
+        html += `<div class="cmodal-research-section">
+          <h3>RESEARCH FOCUS</h3>
+          <div class="research-focus-grid">`;
+        data.researchFocus.forEach(item => {
+          html += `<div class="research-focus-card">
+            <span class="research-focus-num">${item.num}</span>
+            <div class="research-focus-title">${item.title}</div>
+            <div class="research-focus-text">${item.text}</div>
+          </div>`;
+        });
+        html += `</div></div>`;
+      }
+
+      // 2. RESEARCH WORKFLOW
+      if (data.researchWorkflow && data.researchWorkflow.length > 0) {
+        html += `<div class="cmodal-research-section">
+          <h3>RESEARCH WORKFLOW</h3>
+          <div class="research-pipeline-row">`;
+        data.researchWorkflow.forEach((step, idx) => {
+          html += `<span class="research-pipeline-step">${step}</span>`;
+          if (idx < data.researchWorkflow.length - 1) {
+            html += `<span class="research-pipeline-arrow">↓</span>`;
+          }
+        });
+        html += `</div></div>`;
+      }
+
+      // 3. KEY TECHNICAL AREAS
+      if (data.keyTechnicalAreas && data.keyTechnicalAreas.length > 0) {
+        html += `<div class="cmodal-research-section">
+          <h3>KEY TECHNICAL AREAS</h3>
+          <div class="research-tech-chips">`;
+        data.keyTechnicalAreas.forEach(chip => {
+          html += `<span class="research-tech-chip">${chip}</span>`;
+        });
+        html += `</div></div>`;
+      }
+
+      // 4. RESEARCH CONTRIBUTION
+      if (data.researchContribution) {
+        html += `<div class="cmodal-research-section">
+          <h3>RESEARCH CONTRIBUTION</h3>
+          <p class="research-text-block">${data.researchContribution}</p>
+        </div>`;
+      }
+
+      // 5. FROM EXPERIMENTAL PARAMETERS TO PREDICTION
+      if (data.experimentalPrediction && data.experimentalPrediction.length > 0) {
+        html += `<div class="cmodal-research-section">
+          <h3>FROM EXPERIMENTAL PARAMETERS TO PREDICTION</h3>
+          <div class="research-pipeline-row">`;
+        data.experimentalPrediction.forEach((step, idx) => {
+          html += `<span class="research-pipeline-step">${step}</span>`;
+          if (idx < data.experimentalPrediction.length - 1) {
+            html += `<span class="research-pipeline-arrow">→</span>`;
+          }
+        });
+        html += `</div></div>`;
+      }
+
+      researchBoxEl.innerHTML = html;
+      researchBoxEl.style.display = 'flex';
+    } else {
+      researchBoxEl.style.display = 'none';
+      researchBoxEl.innerHTML = '';
     }
   }
 
