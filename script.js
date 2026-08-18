@@ -501,13 +501,29 @@ const certificatesData = {
     image: "certificates/nptel_micromachining.png"
   },
   "cert-greatlearning-catia": {
-    category: "02 // TECHNICAL CERTIFICATIONS",
-    org: "GREAT LEARNING",
-    type: "CATIA Basics",
-    title: "CATIA Basics Certification",
-    date: "CAD Certification",
-    description: "Certified in CATIA V5 3D Computer-Aided Design fundamentals, sketcher workbench, part modeling, and assembly design principles.",
-    image: ""
+    category: "02 // TECHNICAL CERTIFICATIONS [ CAD & MECHANICAL DESIGN ]",
+    org: "GREAT LEARNING ACADEMY",
+    type: "Online Course",
+    title: "CATIA Basics",
+    subtitle: "CAD & Mechanical Design Certification",
+    date: "September 2024",
+    description: "Successfully completed the CATIA Basics online course provided by Great Learning Academy in September 2024. The course provided foundational exposure to CATIA and computer-aided mechanical design, supporting the development of CAD skills relevant to 3D modelling and mechanical engineering design. This certification complements my practical experience with CAD tools and my interest in mechanical product design and engineering applications.",
+    detailsGrid: [
+      { label: "Course", value: "CATIA Basics" },
+      { label: "Provider", value: "Great Learning Academy" },
+      { label: "Type", value: "Online Course" },
+      { label: "Completed", value: "September 2024" },
+      { label: "Domain", value: "CAD / Mechanical Design" }
+    ],
+    keyTechnicalTitle: "KEY SKILL",
+    keyTechnicalAreas: [
+      "CATIA",
+      "CAD",
+      "3D Modelling",
+      "Mechanical Design",
+      "Computer-Aided Design"
+    ],
+    image: "certificates/greatlearning_catia.png"
   },
   "cert-skyy-catia": {
     category: "02 // TECHNICAL CERTIFICATIONS",
