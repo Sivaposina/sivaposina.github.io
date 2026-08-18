@@ -1198,6 +1198,47 @@ body {
   margin-top: 0.3rem;
 }
 
+.cmodal-cert-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.cmodal-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.cmodal-detail-item {
+  background: var(--bg-color);
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.cmodal-detail-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cmodal-detail-value {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
 .cmodal-preview-box {
   border: 2px solid var(--border-color);
   border-radius: 12px;

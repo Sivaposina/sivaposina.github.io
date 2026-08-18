@@ -407,13 +407,21 @@ const certificatesData = {
     image: "certificates/brakes_india.png"
   },
   "cert-tvs-motor": {
-    category: "01 // INDUSTRY & RESEARCH",
+    category: "01 // INDUSTRY & RESEARCH [ 3-DAY IN-PLANT TRAINING ]",
     org: "TVS MOTOR COMPANY",
     type: "In-Plant Training",
-    title: "Industrial In-Plant Training Certificate",
-    date: "Industrial Training",
-    description: "Participated in comprehensive 3-day industrial in-plant training at TVS Motor Company, Hosur, observing two-wheeler assembly line mechanics, lean production lines, and quality assurance.",
-    image: ""
+    title: "3-Day In-Plant Training",
+    subtitle: "2-Wheeler & 3-Wheeler Divisions | Hosur",
+    date: "13–15 October 2025",
+    description: "Completed a 3-day in-plant training at TVS Motor Company, Hosur, from 13 October 2025 to 15 October 2025. The training provided industrial exposure to the 2-wheeler and 3-wheeler divisions, offering an opportunity to observe and understand the automotive manufacturing environment and the practical application of mechanical engineering concepts in vehicle production. The experience provided valuable insight into industrial practices, manufacturing operations, workplace discipline, and the scale of automotive production.",
+    detailsGrid: [
+      { label: "Duration", value: "3 Days" },
+      { label: "Location", value: "Hosur" },
+      { label: "Training Type", value: "In-Plant Training" },
+      { label: "Divisions", value: "2-Wheeler & 3-Wheeler" },
+      { label: "Dates", value: "13 October 2025 – 15 October 2025" }
+    ],
+    image: "certificates/tvs_motor.png"
   },
   "cert-iit-indore": {
     category: "01 // INDUSTRY & RESEARCH",
@@ -517,6 +525,35 @@ function openCertificateModal(data) {
   document.getElementById('cmodal-title').textContent = data.title;
   document.getElementById('cmodal-desc').textContent = data.description;
 
+  // Subtitle (if available)
+  const subtitleEl = document.getElementById('cmodal-subtitle');
+  if (subtitleEl) {
+    if (data.subtitle && data.subtitle.trim() !== "") {
+      subtitleEl.textContent = data.subtitle;
+      subtitleEl.style.display = 'block';
+    } else {
+      subtitleEl.style.display = 'none';
+    }
+  }
+
+  // Training Details Grid (if available)
+  const detailsBoxEl = document.getElementById('cmodal-details-box');
+  const detailsGridEl = document.getElementById('cmodal-details-grid');
+  if (detailsBoxEl && detailsGridEl) {
+    if (data.detailsGrid && data.detailsGrid.length > 0) {
+      detailsGridEl.innerHTML = '';
+      data.detailsGrid.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'cmodal-detail-item';
+        div.innerHTML = `<span class="cmodal-detail-label">${item.label}</span><span class="cmodal-detail-value">${item.value}</span>`;
+        detailsGridEl.appendChild(div);
+      });
+      detailsBoxEl.style.display = 'block';
+    } else {
+      detailsBoxEl.style.display = 'none';
+    }
+  }
+
   const imgEl = document.getElementById('cmodal-img');
   const placeholderEl = document.getElementById('cmodal-placeholder');
   const openBtnEl = document.getElementById('cmodal-open-btn');
@@ -533,7 +570,7 @@ function openCertificateModal(data) {
   } else {
     imgEl.style.display = 'none';
     placeholderEl.style.display = 'block';
-    document.getElementById('cmodal-placeholder-text').textContent = `Official engineering credential issued to Posina Siva Sai Venkat by ${data.org}. (${data.type})`;
+    document.getElementById('cmodal-placeholder-text').textContent = `Official engineering credential issued to Posina Siva Sai Venkat by ${data.org}. (${data.subtitle || data.type})`;
     openBtnEl.style.display = 'none';
   }
 
