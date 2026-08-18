@@ -394,8 +394,8 @@ const certificatesData = {
     type: "Internship — Quality Department",
     title: "Quality Engineering Internship Certificate",
     date: "Industrial Internship",
-    description: "Completed hands-on quality inspection, metrology calibration, gauge history logging, and GD&T engineering drawing interpretation during manufacturing operations at ACE Inotec, Bengaluru.",
-    image: ""
+    description: "Successfully completed internship training at ACE Inotec Manufacturing Pvt. Ltd., Bengaluru, from 21 May 2025 to 16 June 2025 in the Quality Department. Gained practical exposure to gauges and inspection processes, quality documentation, and manufacturing quality practices. Developed an Excel-based OEE tracking tool to support production-efficiency analysis and created a Gauge History & Inspection System for tracking gauge usage and inspection data. The internship strengthened practical understanding of industrial quality processes while demonstrating keen learning, hard work, discipline, and good conduct.",
+    image: "certificates/ace_inotec.png"
   },
   "cert-brakes-india": {
     category: "01 // INDUSTRY & RESEARCH",
