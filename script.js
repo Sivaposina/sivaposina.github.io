@@ -526,13 +526,30 @@ const certificatesData = {
     image: "certificates/greatlearning_catia.png"
   },
   "cert-skyy-catia": {
-    category: "02 // TECHNICAL CERTIFICATIONS",
+    category: "02 // TECHNICAL CERTIFICATIONS [ 1-HOUR PROGRAM ]",
     org: "SKYY SKILL ACADEMY",
-    type: "3D Modelling in CATIA",
-    title: "Advanced 3D Modelling in CATIA",
-    date: "CAD Certification",
-    description: "Professional certification in parametric 3D surface modeling, mechanical assembly creation, and drafting standards using CATIA V5 software.",
-    image: ""
+    type: "Certified Program",
+    title: "3D Modelling in CATIA",
+    subtitle: "1-Hour Certified Program | May 2025",
+    date: "17 May 2025",
+    description: "Successfully participated in and completed a 1-hour certified program on “3D Modelling in CATIA” conducted by SKYY Skill Academy on 17 May 2025. The program provided focused exposure to CATIA-based 3D modelling and supported the development of foundational CAD skills relevant to mechanical engineering and product design.",
+    detailsGrid: [
+      { label: "Program", value: "3D Modelling in CATIA" },
+      { label: "Provider", value: "SKYY Skill Academy" },
+      { label: "Duration", value: "1 Hour" },
+      { label: "Type", value: "Certified Program" },
+      { label: "Date", value: "17 May 2025" },
+      { label: "Certificate No.", value: "SSA-00-25606" }
+    ],
+    keyTechnicalTitle: "KEY SKILLS",
+    keyTechnicalAreas: [
+      "CATIA",
+      "3D Modelling",
+      "CAD",
+      "Mechanical Design",
+      "Product Modelling"
+    ],
+    image: "certificates/skyy_catia.png"
   },
   "cert-aylin-autocad": {
     category: "02 // TECHNICAL CERTIFICATIONS",
