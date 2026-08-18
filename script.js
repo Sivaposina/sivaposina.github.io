@@ -468,15 +468,6 @@ const certificatesData = {
     date: "National Award",
     description: "Secured Top 30 All-India Rank in KBR (Kriya), a prestigious national engineering design competition evaluating CAD modeling, innovation, and technical design feasibility.",
     image: ""
-  },
-  "cert-kbr-appreciation": {
-    category: "03 // AWARDS & RECOGNITION",
-    org: "KBR",
-    type: "KRIYA Participation / Appreciation Certificate",
-    title: "KRIYA National Technical Event Certificate",
-    date: "Technical Achievement",
-    description: "Awarded certificate of participation and appreciation for outstanding mechanical engineering design presentation and technical contribution at KRIYA national engineering symposium.",
-    image: ""
   }
 };
 
