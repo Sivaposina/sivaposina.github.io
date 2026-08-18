@@ -421,7 +421,7 @@ const certificatesData = {
       { label: "Divisions", value: "2-Wheeler & 3-Wheeler" },
       { label: "Dates", value: "13 October 2025 – 15 October 2025" }
     ],
-    image: "certificates/tvs_motor.png"
+    image: ""
   },
   "cert-iit-indore": {
     category: "01 // INDUSTRY & RESEARCH",
@@ -559,14 +559,21 @@ function openCertificateModal(data) {
   const openBtnEl = document.getElementById('cmodal-open-btn');
 
   if (data.image && data.image.trim() !== "") {
+    imgEl.onload = () => {
+      imgEl.style.display = 'block';
+      placeholderEl.style.display = 'none';
+      openBtnEl.href = data.image;
+      openBtnEl.style.display = 'inline-flex';
+    };
+    imgEl.onerror = () => {
+      imgEl.style.display = 'none';
+      placeholderEl.style.display = 'block';
+      document.getElementById('cmodal-placeholder-text').textContent = `Official engineering credential issued to Posina Siva Sai Venkat by ${data.org}. (${data.subtitle || data.type})`;
+      openBtnEl.style.display = 'none';
+    };
     imgEl.src = data.image;
-    imgEl.style.display = 'block';
     imgEl.style.cursor = 'pointer';
     imgEl.onclick = () => { window.open(data.image, '_blank'); };
-    placeholderEl.style.display = 'none';
-
-    openBtnEl.href = data.image;
-    openBtnEl.style.display = 'inline-flex';
   } else {
     imgEl.style.display = 'none';
     placeholderEl.style.display = 'block';
