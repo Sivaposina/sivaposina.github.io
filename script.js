@@ -421,7 +421,7 @@ const certificatesData = {
       { label: "Divisions", value: "2-Wheeler & 3-Wheeler" },
       { label: "Dates", value: "13 October 2025 – 15 October 2025" }
     ],
-    image: ""
+    image: "certificates/tvs_motor.png"
   },
   "cert-iit-indore": {
     category: "01 // INDUSTRY & RESEARCH",
