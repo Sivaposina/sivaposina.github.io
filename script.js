@@ -474,13 +474,31 @@ const certificatesData = {
     image: "certificates/iit_indore.png"
   },
   "cert-nptel-micromachining": {
-    category: "02 // TECHNICAL CERTIFICATIONS",
+    category: "02 // TECHNICAL CERTIFICATIONS [ 12-WEEK COURSE ]",
     org: "NPTEL",
-    type: "Introduction to Mechanical Micro Machining",
-    title: "NPTEL Certification — Mechanical Micro Machining",
-    date: "Technical Certification",
-    description: "National Programme on Technology Enhanced Learning (NPTEL) certified course covering micro-machining fundamentals, precision manufacturing, micro-EDM, laser processing, and tool wear mechanics.",
-    image: ""
+    type: "12-Week Technical Certification",
+    title: "Introduction to Mechanical Micro Machining",
+    subtitle: "12-Week Technical Certification | Jan–Apr 2026",
+    date: "Jan–Apr 2026",
+    description: "Successfully completed the 12-week NPTEL course “Introduction to Mechanical Micro Machining” during January–April 2026. The course provided a structured understanding of mechanical micro-machining and its role in advanced manufacturing, developing technical knowledge relevant to precision engineering, miniaturized components, and modern manufacturing processes. The certification strengthened my understanding of advanced machining concepts and expanded my foundation in manufacturing engineering.",
+    detailsGrid: [
+      { label: "Course", value: "Introduction to Mechanical Micro Machining" },
+      { label: "Platform", value: "NPTEL" },
+      { label: "Duration", value: "12 Weeks" },
+      { label: "Period", value: "January – April 2026" },
+      { label: "Credits Recommended", value: "4" },
+      { label: "Certificate ID", value: "NPTEL26ME59S952301089" }
+    ],
+    keyTechnicalTitle: "KEY LEARNING AREA",
+    keyTechnicalAreas: [
+      "Mechanical Micro Machining",
+      "Advanced Manufacturing",
+      "Precision Machining",
+      "Micro-Scale Manufacturing",
+      "Machining Processes",
+      "Manufacturing Engineering"
+    ],
+    image: "certificates/nptel_micromachining.png"
   },
   "cert-greatlearning-catia": {
     category: "02 // TECHNICAL CERTIFICATIONS",
@@ -630,10 +648,10 @@ function openCertificateModal(data) {
         html += `</div></div>`;
       }
 
-      // 3. KEY TECHNICAL AREAS
+      // 3. KEY TECHNICAL AREAS / LEARNING AREAS
       if (data.keyTechnicalAreas && data.keyTechnicalAreas.length > 0) {
         html += `<div class="cmodal-research-section">
-          <h3>KEY TECHNICAL AREAS</h3>
+          <h3>${data.keyTechnicalTitle || 'KEY TECHNICAL AREAS'}</h3>
           <div class="research-tech-chips">`;
         data.keyTechnicalAreas.forEach(chip => {
           html += `<span class="research-tech-chip">${chip}</span>`;
