@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initProjectFilters();
   initCaseStudyModal();
+  initCertificateModal();
   initResumeModal();
   initContactForm();
 });
@@ -381,4 +382,168 @@ function initContactForm() {
     form.reset();
     setTimeout(() => { feedback.style.display = 'none'; }, 6000);
   });
+}
+
+/* ==========================================================================
+   6. CERTIFICATES DATA STORE & MODAL HANDLER
+   ========================================================================== */
+const certificatesData = {
+  "cert-ace-inotec": {
+    category: "01 // INDUSTRY & RESEARCH",
+    org: "ACE INOTEC MANUFACTURING PVT. LTD.",
+    type: "Internship — Quality Department",
+    title: "Quality Engineering Internship Certificate",
+    date: "Industrial Internship",
+    description: "Completed hands-on quality inspection, metrology calibration, gauge history logging, and GD&T engineering drawing interpretation during manufacturing operations at ACE Inotec, Bengaluru.",
+    image: ""
+  },
+  "cert-brakes-india": {
+    category: "01 // INDUSTRY & RESEARCH",
+    org: "BRAKES INDIA",
+    type: "Internship — Actuation Unit",
+    title: "Industrial Internship Certificate — Actuation Unit",
+    date: "Industrial Internship",
+    description: "Completed in-plant training and industrial internship at Brakes India Actuation Unit, studying precision automotive brake assembly, manufacturing processes, and quality protocols.",
+    image: ""
+  },
+  "cert-tvs-motor": {
+    category: "01 // INDUSTRY & RESEARCH",
+    org: "TVS MOTOR COMPANY",
+    type: "In-Plant Training",
+    title: "Industrial In-Plant Training Certificate",
+    date: "Industrial Training",
+    description: "Participated in comprehensive 3-day industrial in-plant training at TVS Motor Company, Hosur, observing two-wheeler assembly line mechanics, lean production lines, and quality assurance.",
+    image: ""
+  },
+  "cert-iit-indore": {
+    category: "01 // INDUSTRY & RESEARCH",
+    org: "IIT INDORE",
+    type: "Research Internship",
+    title: "Research Internship Certificate — ML & Polymer Processing",
+    date: "Research Internship",
+    description: "Conducted research internship under faculty guidance at IIT Indore, developing machine learning regression models for PVDF electrospinning fiber optimization and authoring 3 research paper manuscripts.",
+    image: ""
+  },
+  "cert-nptel-micromachining": {
+    category: "02 // TECHNICAL CERTIFICATIONS",
+    org: "NPTEL",
+    type: "Introduction to Mechanical Micro Machining",
+    title: "NPTEL Certification — Mechanical Micro Machining",
+    date: "Technical Certification",
+    description: "National Programme on Technology Enhanced Learning (NPTEL) certified course covering micro-machining fundamentals, precision manufacturing, micro-EDM, laser processing, and tool wear mechanics.",
+    image: ""
+  },
+  "cert-greatlearning-catia": {
+    category: "02 // TECHNICAL CERTIFICATIONS",
+    org: "GREAT LEARNING",
+    type: "CATIA Basics",
+    title: "CATIA Basics Certification",
+    date: "CAD Certification",
+    description: "Certified in CATIA V5 3D Computer-Aided Design fundamentals, sketcher workbench, part modeling, and assembly design principles.",
+    image: ""
+  },
+  "cert-skyy-catia": {
+    category: "02 // TECHNICAL CERTIFICATIONS",
+    org: "SKYY SKILL ACADEMY",
+    type: "3D Modelling in CATIA",
+    title: "Advanced 3D Modelling in CATIA",
+    date: "CAD Certification",
+    description: "Professional certification in parametric 3D surface modeling, mechanical assembly creation, and drafting standards using CATIA V5 software.",
+    image: ""
+  },
+  "cert-aylin-autocad": {
+    category: "02 // TECHNICAL CERTIFICATIONS",
+    org: "AUTOCAD",
+    type: "Aylin Technologies",
+    title: "AutoCAD Engineering Drafting Certification",
+    date: "CAD Certification",
+    description: "Certified in 2D technical drawing, orthographic projection callouts, dimensioning standards, and engineering blueprint preparation by Aylin Technologies Pvt. Ltd.",
+    image: ""
+  },
+  "cert-kbr-award": {
+    category: "03 // AWARDS & RECOGNITION",
+    org: "KBR",
+    type: "Winning / Award Certificate",
+    title: "KBR Engineering Design Competition Award",
+    date: "National Award",
+    description: "Secured Top 30 All-India Rank in KBR (Kriya), a prestigious national engineering design competition evaluating CAD modeling, innovation, and technical design feasibility.",
+    image: ""
+  },
+  "cert-kbr-appreciation": {
+    category: "03 // AWARDS & RECOGNITION",
+    org: "KBR",
+    type: "KRIYA Participation / Appreciation Certificate",
+    title: "KRIYA National Technical Event Certificate",
+    date: "Technical Achievement",
+    description: "Awarded certificate of participation and appreciation for outstanding mechanical engineering design presentation and technical contribution at KRIYA national engineering symposium.",
+    image: ""
+  }
+};
+
+function initCertificateModal() {
+  const modal = document.getElementById('certificate-modal');
+  const closeBtn = document.getElementById('close-cert-modal-btn');
+  const certCards = document.querySelectorAll('.cert-item-card');
+
+  if (!modal || !closeBtn) return;
+
+  certCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const certId = card.getAttribute('data-cert-id');
+      const data = certificatesData[certId];
+      if (data) {
+        openCertificateModal(data);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
+function openCertificateModal(data) {
+  const modal = document.getElementById('certificate-modal');
+  
+  document.getElementById('cmodal-category-badge').textContent = data.category;
+  document.getElementById('cmodal-date-tag').textContent = `[ ${data.date.toUpperCase()} ]`;
+  document.getElementById('cmodal-org').textContent = data.org;
+  document.getElementById('cmodal-title').textContent = data.title;
+  document.getElementById('cmodal-desc').textContent = data.description;
+
+  const imgEl = document.getElementById('cmodal-img');
+  const placeholderEl = document.getElementById('cmodal-placeholder');
+  const openBtnEl = document.getElementById('cmodal-open-btn');
+
+  if (data.image && data.image.trim() !== "") {
+    imgEl.src = data.image;
+    imgEl.style.display = 'block';
+    placeholderEl.style.display = 'none';
+
+    openBtnEl.href = data.image;
+    openBtnEl.style.display = 'inline-flex';
+  } else {
+    imgEl.style.display = 'none';
+    placeholderEl.style.display = 'block';
+    document.getElementById('cmodal-placeholder-text').textContent = `Official engineering credential issued to Posina Siva Sai Venkat by ${data.org}. (${data.type})`;
+    openBtnEl.style.display = 'none';
+  }
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }

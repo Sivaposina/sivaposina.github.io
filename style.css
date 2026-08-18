@@ -1097,6 +1097,164 @@ body {
   margin-bottom: 0.4rem;
 }
 
+/* ==========================================================================
+   CERTIFICATES SECTION & CLICKABLE MINIMAL CARDS
+   ========================================================================== */
+.certificates-section {
+  position: relative;
+}
+
+.certificates-category-block {
+  margin-bottom: 2.8rem;
+}
+
+.cert-category-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 2px dashed var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.25rem;
+}
+
+.cert-item-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  filter: url('#sketch-filter');
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cert-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 7px 7px 0px var(--shadow-color);
+  border-color: var(--text-main);
+}
+
+.cert-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.cert-org-name {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+.cert-arrow-icon {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.cert-item-card:hover .cert-arrow-icon {
+  transform: translate(2px, -2px);
+  color: var(--text-main);
+}
+
+.cert-short-type {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* CERTIFICATE MODAL SPECIFICS */
+.cmodal-header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cmodal-cert-type {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+.cmodal-preview-box {
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  background: var(--preview-bg);
+  padding: 1.2rem;
+  margin-top: 1rem;
+}
+
+.cmodal-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.cmodal-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  box-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.cmodal-placeholder-box {
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  border: 2px dashed var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-color);
+  width: 100%;
+}
+
+.cert-seal {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--text-main);
+}
+
+.cmodal-placeholder-box p {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.cmodal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.2rem;
+}
+
 /* FOOTER */
 .draft-footer {
   padding: 2rem 0;
@@ -1115,7 +1273,7 @@ body {
   .project-stats-strip { flex-direction: column; gap: 1rem; text-align: center; }
   .pstat-divider { display: none; }
   .hero-stats-row { grid-template-columns: repeat(2, 1fr); }
-  .about-two-col, .skills-card-grid, .achievements-grid { grid-template-columns: 1fr; }
+  .about-two-col, .skills-card-grid, .achievements-grid, .certificates-grid { grid-template-columns: 1fr; }
   .form-row-2 { grid-template-columns: 1fr; }
   .nav-links { display: none; }
 }
