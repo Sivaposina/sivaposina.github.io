@@ -1366,6 +1366,44 @@ body {
   color: var(--text-main);
 }
 
+/* SUPPORTING LEARNING MATERIAL STYLES */
+.cmodal-supporting-box {
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-card);
+  padding: 1.1rem;
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  margin-top: 1.2rem;
+}
+
+.cmodal-supporting-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.cmodal-supporting-title {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.cmodal-supporting-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.cmodal-supporting-meta {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
 .research-text-block {
   font-family: var(--font-sans);
   font-size: 0.92rem;

@@ -532,7 +532,7 @@ const certificatesData = {
     title: "3D Modelling in CATIA",
     subtitle: "1-Hour Certified Program | May 2025",
     date: "17 May 2025",
-    description: "Successfully participated in and completed a 1-hour certified program on “3D Modelling in CATIA” conducted by SKYY Skill Academy on 17 May 2025. The program provided focused exposure to CATIA-based 3D modelling and supported the development of foundational CAD skills relevant to mechanical engineering and product design.",
+    description: "Successfully completed a 1-hour certified program on “3D Modelling in CATIA” conducted by SKYY Skill Academy on 17 May 2025. The learning was supported by CATIA V5 hands-on tutorial material covering Sketcher, 2D profile creation, dimensional and geometrical constraints, and fundamental 3D part modelling workflows.",
     detailsGrid: [
       { label: "Program", value: "3D Modelling in CATIA" },
       { label: "Provider", value: "SKYY Skill Academy" },
@@ -541,14 +541,22 @@ const certificatesData = {
       { label: "Date", value: "17 May 2025" },
       { label: "Certificate No.", value: "SSA-00-25606" }
     ],
-    keyTechnicalTitle: "KEY SKILLS",
+    keyTechnicalTitle: "LEARNING AREAS",
     keyTechnicalAreas: [
-      "CATIA",
-      "3D Modelling",
-      "CAD",
-      "Mechanical Design",
-      "Product Modelling"
+      "CATIA V5",
+      "Sketcher",
+      "2D Profile Creation",
+      "Geometrical & Dimensional Constraints",
+      "3D Part Modelling",
+      "CAD Fundamentals"
     ],
+    supportingMaterial: {
+      title: "Introduction to CATIA V5",
+      subtitle: "Release 16 – A Hands-On Tutorial Approach",
+      author: "Kirstie Plantenberg",
+      institution: "University of Detroit Mercy",
+      file: "certificates/catia_v5_tutorial.pdf"
+    },
     image: "certificates/skyy_catia.png"
   },
   "cert-aylin-autocad": {
@@ -749,6 +757,22 @@ function openCertificateModal(data) {
     placeholderEl.style.display = 'block';
     document.getElementById('cmodal-placeholder-text').textContent = `Official engineering credential issued to Posina Siva Sai Venkat by ${data.org}. (${data.subtitle || data.type})`;
     openBtnEl.style.display = 'none';
+  }
+
+  // Supporting Material Handler
+  const supportingBoxEl = document.getElementById('cmodal-supporting-box');
+  if (supportingBoxEl) {
+    if (data.supportingMaterial) {
+      document.getElementById('cmodal-supporting-title').textContent = data.supportingMaterial.title;
+      document.getElementById('cmodal-supporting-subtitle').textContent = data.supportingMaterial.subtitle;
+      document.getElementById('cmodal-supporting-author').textContent = data.supportingMaterial.author;
+      document.getElementById('cmodal-supporting-inst').textContent = data.supportingMaterial.institution;
+      const btnEl = document.getElementById('cmodal-supporting-btn');
+      btnEl.href = data.supportingMaterial.file;
+      supportingBoxEl.style.display = 'block';
+    } else {
+      supportingBoxEl.style.display = 'none';
+    }
   }
 
   modal.style.display = 'flex';
