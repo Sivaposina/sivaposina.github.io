@@ -585,13 +585,33 @@ const certificatesData = {
     image: "certificates/aylin_autocad.png"
   },
   "cert-kbr-award": {
-    category: "03 // AWARDS & RECOGNITION",
+    category: "03 // AWARDS & RECOGNITION [ WINNER ]",
     org: "KBR",
-    type: "Winning / Award Certificate",
-    title: "KBR Engineering Design Competition Award",
-    date: "National Award",
-    description: "Secured Top 30 All-India Rank in KBR (Kriya), a prestigious national engineering design competition evaluating CAD modeling, innovation, and technical design feasibility.",
-    image: ""
+    type: "Certificate of Achievement",
+    title: "Winner — Kriya Initiative",
+    subtitle: "2nd Edition | Certificate of Achievement",
+    date: "2nd Edition",
+    description: "Declared a Winner in the 2nd Edition of the Kriya Initiative by KBR for the project “Coating, Insulation, and Fire Proofing.” The recognition reflects outstanding project contribution, dedication, and innovative thinking in addressing an industry-focused engineering problem. This achievement represents experience in applying engineering knowledge to develop practical ideas and contribute to a competitive industry-oriented project.",
+    detailsTitle: "ACHIEVEMENT DETAILS",
+    detailsGrid: [
+      { label: "Organization", value: "KBR" },
+      { label: "Initiative", value: "Kriya Initiative" },
+      { label: "Edition", value: "2nd Edition" },
+      { label: "Recognition", value: "Winner" },
+      { label: "Project", value: "Coating, Insulation, and Fire Proofing" },
+      { label: "Recognition Type", value: "Certificate of Achievement" }
+    ],
+    keyTechnicalTitle: "PROJECT FOCUS",
+    keyTechnicalAreas: [
+      "Coating",
+      "Insulation",
+      "Fire Proofing",
+      "Industrial Applications",
+      "Engineering Innovation"
+    ],
+    researchContributionTitle: "RECOGNITION",
+    researchContribution: "Selected as a winner in a KBR industry-oriented initiative, demonstrating the ability to contribute innovative ideas to a practical engineering challenge.",
+    image: "certificates/kbr_award.png"
   }
 };
 
@@ -652,10 +672,14 @@ function openCertificateModal(data) {
     }
   }
 
-  // Training Details Grid (if available)
+  // Training / Achievement Details Grid (if available)
   const detailsBoxEl = document.getElementById('cmodal-details-box');
   const detailsGridEl = document.getElementById('cmodal-details-grid');
+  const detailsTitleEl = document.getElementById('cmodal-details-title');
   if (detailsBoxEl && detailsGridEl) {
+    if (detailsTitleEl) {
+      detailsTitleEl.textContent = data.detailsTitle || 'TRAINING DETAILS';
+    }
     if (data.detailsGrid && data.detailsGrid.length > 0) {
       detailsGridEl.innerHTML = '';
       data.detailsGrid.forEach(item => {
@@ -718,10 +742,10 @@ function openCertificateModal(data) {
         html += `</div></div>`;
       }
 
-      // 4. RESEARCH CONTRIBUTION
+      // 4. RESEARCH CONTRIBUTION / RECOGNITION
       if (data.researchContribution) {
         html += `<div class="cmodal-research-section">
-          <h3>RESEARCH CONTRIBUTION</h3>
+          <h3>${data.researchContributionTitle || 'RESEARCH CONTRIBUTION'}</h3>
           <p class="research-text-block">${data.researchContribution}</p>
         </div>`;
       }
