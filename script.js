@@ -560,13 +560,29 @@ const certificatesData = {
     image: "certificates/skyy_catia.png"
   },
   "cert-aylin-autocad": {
-    category: "02 // TECHNICAL CERTIFICATIONS",
-    org: "AUTOCAD",
-    type: "Aylin Technologies",
-    title: "AutoCAD Engineering Drafting Certification",
-    date: "CAD Certification",
-    description: "Certified in 2D technical drawing, orthographic projection callouts, dimensioning standards, and engineering blueprint preparation by Aylin Technologies Pvt. Ltd.",
-    image: ""
+    category: "02 // TECHNICAL TRAINING [ 3-DAY ONLINE PROGRAM ]",
+    org: "AYLIN TECHNOLOGIES PRIVATE LIMITED",
+    type: "3-Day Online Training Program",
+    title: "Fundamentals of AutoCAD",
+    subtitle: "3-Day Online Training Program | Oct 2024",
+    date: "07 Oct 2024 – 09 Oct 2024",
+    description: "Successfully completed a 3-day online training program on Fundamentals of AutoCAD conducted by Aylin Technologies Private Limited from 07 October 2024 to 09 October 2024. The training provided foundational exposure to AutoCAD and strengthened my understanding of computer-aided drafting and technical drawing practices, supporting my development of practical CAD skills for Mechanical Engineering applications.",
+    detailsGrid: [
+      { label: "Organization", value: "Aylin Technologies Private Limited" },
+      { label: "Training", value: "Fundamentals of AutoCAD" },
+      { label: "Duration", value: "07 Oct 2024 – 09 Oct 2024" },
+      { label: "Certificate No.", value: "APC240105" },
+      { label: "Issued", value: "14 Oct 2024" }
+    ],
+    keyTechnicalTitle: "KEY SKILLS",
+    keyTechnicalAreas: [
+      "AutoCAD",
+      "2D Technical Drafting",
+      "Computer-Aided Design",
+      "Technical Drawing",
+      "Mechanical Drafting"
+    ],
+    image: "certificates/aylin_autocad.png"
   },
   "cert-kbr-award": {
     category: "03 // AWARDS & RECOGNITION",
