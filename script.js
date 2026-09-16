@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectFilters();
   initCaseStudyModal();
   initCertificateModal();
-  initResumeModal();
   initContactForm();
 });
 
@@ -316,32 +315,8 @@ function openCaseStudyModal(data) {
 }
 
 /* ==========================================================================
-   5. RESUME MODAL & CONTACT FORM
+   5. CONTACT FORM
    ========================================================================== */
-function initResumeModal() {
-  const modal = document.getElementById('resume-modal');
-  const openBtn = document.getElementById('open-resume-btn');
-  const closeBtn = document.getElementById('close-modal-btn');
-
-  if (!modal || !openBtn || !closeBtn) return;
-
-  openBtn.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  });
-}
 
 function initContactForm() {
   const form = document.getElementById('contact-form');
