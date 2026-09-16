@@ -1408,7 +1408,13 @@ body {
   font-family: var(--font-sans);
   font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--text-main);
+  color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .research-item-desc, .research-item-tags {
+    padding-left: 0 !important;
+  }
 }
 
 .cmodal-img-container {
