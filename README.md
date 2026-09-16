@@ -54,4 +54,4 @@ Follow the prompts to launch your site in seconds!
 - `style.css` - Custom sketch styling, paper grid theme, dark mode & responsive UI.
 - `script.js` - Dynamic background canvas, interactive project simulators & filter system.
 - `avatar.jpg` - Direct original photo of Posina Siva Sai Venkat.
-- `electrospinning.jpg`, `bone_scaffold.jpg`, `drone_catia.jpg` - Project visual assets.
+- `electrospinning.jpg`, `drone_catia.jpg` - Project visual assets.

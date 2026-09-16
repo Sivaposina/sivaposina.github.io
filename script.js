@@ -35,24 +35,6 @@ const projectsData = {
     learning: "Gained practical experience in combining experimental physical processes with statistical machine learning modeling for process parameter optimization."
   },
   p2: {
-    title: "3D-Printed Artificial Bone Scaffold",
-    categoryTag: "CAD & BIO-MANUFACTURING",
-    images: [
-      { src: "bone_scaffold_cad.png", caption: "CAD lattice scaffold design" },
-      { src: "bone_scaffold_print.png", caption: "3D-printed artificial bone scaffold" }
-    ],
-    overview: "Porous biomimetic scaffold design using CAD modeling and additive manufacturing.",
-    role: "CAD & Additive Manufacturing Designer",
-    tools: ["Fusion 360", "CAD Modeling", "3D Printing", "Additive Manufacturing", "Bioengineering"],
-    details: [
-      "Created parametric porous unit-cell lattice structures using 3D CAD software.",
-      "Optimized structural geometry to achieve targeted porosity for biomimetic applications.",
-      "Fabricated prototype scaffolds using high-precision FDM 3D printing.",
-      "Evaluated physical lattice geometry integrity and pore distribution."
-    ],
-    learning: "Mastered biomimetic porous lattice modeling techniques and FDM 3D printing slice parameters for medical engineering applications."
-  },
-  p3: {
     title: "Gauge History & Inspection System",
     categoryTag: "QUALITY / MANUFACTURING",
     images: [
@@ -68,7 +50,7 @@ const projectsData = {
     ],
     learning: "Gained rigorous exposure to GD&T callout interpretation, precision metrology calibration, and industrial quality assurance workflows."
   },
-  p4: {
+  p3: {
     title: "Drone Lab Mechanical Component",
     categoryTag: "CAD & 3D PRINTING",
     images: [
